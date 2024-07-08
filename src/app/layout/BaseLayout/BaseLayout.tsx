@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Announcement from "@/shared/ui/Announcement/Announcement";
+import { Header } from "@/widgets/Header";
+import { Announcement } from "@/shared/ui";
 
 const BaseLayout = () => {
   return (
@@ -14,7 +15,7 @@ const BaseLayout = () => {
             .
           </span>
         </Announcement>
-        <header>header</header>
+        <Header />
         <main>
           <Outlet />
         </main>

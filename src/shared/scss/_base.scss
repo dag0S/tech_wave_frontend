@@ -28,11 +28,7 @@ area {
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  color: var(--main-text-color);
+  background-color: var(--page-background-color);
   overflow-x: hidden;
-}
-
-.container {
-  max-width: 1520px;
-  margin: 0 auto;
-  padding: 0 10px;
 }

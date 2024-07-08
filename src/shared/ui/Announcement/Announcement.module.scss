@@ -4,15 +4,14 @@
   align-items: center;
   padding: 18px 0;
 
-  background: #692fff;
+  background: var(--announcement-color);
 
   font-weight: 500;
   font-size: 20px;
-  color: #fff;
 
   a {
     text-decoration: underline;
     text-decoration-skip-ink: none;
-    color: #ffc846;
+    color: var(--link-color);
   }
 }
