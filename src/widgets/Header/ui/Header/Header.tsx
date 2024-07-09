@@ -1,14 +1,18 @@
 import { Container } from "@/shared/ui";
 import { FC } from "react";
+import Navigation from "../Navigation/Navigation";
+import Logo from "../Logo/Logo";
 
 import styles from "./Header.module.scss";
-import Logo from "../Logo/Logo";
 
 const Header: FC = () => {
   return (
     <header className={styles["header"]}>
       <Container>
-        <Logo />
+        <div className={styles["header__inner"]}>
+          <Logo />
+          <Navigation />
+        </div>
       </Container>
     </header>
   );
