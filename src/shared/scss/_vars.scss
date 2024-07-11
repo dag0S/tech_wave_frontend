@@ -1,7 +1,15 @@
-body {
+body.light {
   --announcement-color: #692fff;
   --page-background-color: #f5f8ff;
   --link-color: #ffc846;
   --main-text-color: #fff;
-  --header-color: #0DD0E7;
+  --header-color: #0dd0e7;
+}
+
+body.dark {
+  --announcement-color: #7945ff;
+  --page-background-color: #14212a;
+  --link-color: #ffd675;
+  --main-text-color: #fff;
+  --header-color: #09545c;
 }

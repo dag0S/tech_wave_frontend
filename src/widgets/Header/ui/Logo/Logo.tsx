@@ -1,10 +1,11 @@
+import { paths } from "@/shared/lib/react-router";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
 const Logo: FC = () => {
   return (
-    <Link to="/">
-      <img src="./public/svg/logo.svg" alt="logo" />
+    <Link to={paths.home}>
+      <img src="/svg/logo.svg" alt="logo" />
     </Link>
   );
 };

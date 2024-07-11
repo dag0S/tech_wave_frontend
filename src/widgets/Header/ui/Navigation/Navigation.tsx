@@ -1,38 +1,37 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
+import { paths } from "@/shared/lib/react-router";
+import { ChangeTheme } from "@/features/changeTheme";
 
 import styles from "./Navigation.module.scss";
-import { Link } from "react-router-dom";
 
 const Navigation: FC = () => {
   return (
     <ul className={styles["navigation"]}>
       <li>
         <button className={styles["navigation__item"]}>
-          <img src="/public/svg/search.svg" alt="search" />
+          <img src="/svg/search.svg" alt="search" />
           Поиск
         </button>
       </li>
       <li>
-        <button className={styles["navigation__item"]}>
-          <img src="/public/svg/theme.svg" alt="theme" />
-          Тема
-        </button>
+        <ChangeTheme className={styles["navigation__item"]} />
       </li>
       <li>
-        <Link to="/" className={styles["navigation__item"]}>
-          <img src="/public/svg/favorite.svg" alt="favorite" />
+        <Link to={paths.favoriteList} className={styles["navigation__item"]}>
+          <img src="/svg/favorite.svg" alt="favorite" />
           Избранное
         </Link>
       </li>
       <li>
-        <Link to="/" className={styles["navigation__item"]}>
-          <img src="/public/svg/cart.svg" alt="cart" />
+        <Link to={paths.cart} className={styles["navigation__item"]}>
+          <img src="/svg/cart.svg" alt="cart" />
           Корзина
         </Link>
       </li>
       <li>
-        <Link to="/" className={styles["navigation__item"]}>
-          <img src="/public/svg/user.svg" alt="user" />
+        <Link to={paths.auth} className={styles["navigation__item"]}>
+          <img src="/svg/user.svg" alt="user" />
           Войти
         </Link>
       </li>
