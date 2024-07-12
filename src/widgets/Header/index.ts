@@ -1,3 +1,3 @@
-import Header from "./ui/Header/Header";
+import Header from "./ui/header/Header";
 
 export { Header };

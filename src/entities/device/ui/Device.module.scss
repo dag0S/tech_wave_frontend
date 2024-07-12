@@ -1,0 +1,46 @@
+.device {
+  max-width: 278px;
+  min-height: 373px;
+  border-radius: 4px;
+  padding: 5px;
+
+  background: var(--device-card-color);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+
+  &__image {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+
+    margin-bottom: 6px;
+  }
+
+  &__price {
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--link-color);
+
+    margin-bottom: 6px;
+  }
+
+  &__add-to-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    width: 100%;
+    border-radius: 4px;
+    padding: 3px 58px;
+
+    background: var(--button-color);
+
+    font-weight: 500;
+    font-size: 20px;
+  }
+}

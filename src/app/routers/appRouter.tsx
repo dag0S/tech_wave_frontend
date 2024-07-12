@@ -2,6 +2,7 @@ import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { paths } from "@/shared/lib/react-router";
 import BaseLayout from "../layout/BaseLayout/BaseLayout";
+import { HomePage } from "@/pages/home";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: paths.home,
-        element: <div>Hello world!</div>,
+        element: <HomePage />,
       },
     ],
   },

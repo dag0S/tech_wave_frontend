@@ -1,7 +1,7 @@
 import { Container } from "@/shared/ui";
 import { FC } from "react";
-import Navigation from "../Navigation/Navigation";
-import Logo from "../Logo/Logo";
+import Navigation from "../navigation/Navigation";
+import Logo from "../logo/Logo";
 
 import styles from "./Header.module.scss";
 
