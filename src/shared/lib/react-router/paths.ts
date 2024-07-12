@@ -6,4 +6,5 @@ export const paths = {
   auth: "/auth",
   profile: "/profile",
   admin: "/admin",
+  notFound: "/not-found",
 };

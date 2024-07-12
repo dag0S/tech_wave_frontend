@@ -8,10 +8,10 @@ import styles from "./Device.module.scss";
 const Device: FC<IDevice> = ({ id, name, price, imageUrl }) => {
   return (
     <div className={styles["device"]}>
-      <Link to={`${paths}/:${id}`}>
+      <Link to={`${paths.product}/:${id}`}>
         <img className={styles["device__image"]} src={imageUrl} alt={name} />
       </Link>
-      <Link to={`${paths}/:${id}`}>
+      <Link to={`${paths.product}/:${id}`}>
         <h6 className={styles["device__title"]}>{name}</h6>
       </Link>
       <div className={styles["device__price"]}>

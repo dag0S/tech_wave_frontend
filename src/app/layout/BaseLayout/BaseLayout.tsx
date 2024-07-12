@@ -19,7 +19,6 @@ const BaseLayout = () => {
         <main>
           <Outlet />
         </main>
-        <footer>footer</footer>
         <Announcement>
           Это fake сайт. Никаких реальных транзакций и операций не производится!
         </Announcement>
