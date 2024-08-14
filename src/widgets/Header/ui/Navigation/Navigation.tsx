@@ -1,15 +1,29 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "@/shared/lib/react-router";
 import { ChangeTheme } from "@/features/changeTheme";
+import { Modal } from "@/shared/ui";
 
 import styles from "./Navigation.module.scss";
 
 const Navigation: FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
   return (
     <ul className={styles["navigation"]}>
+      <Modal isOpen={isOpen} onClose={handleClose}>
+        text
+      </Modal>
       <li>
-        <button className={styles["navigation__item"]}>
+        <button className={styles["navigation__item"]} onClick={handleOpen}>
           <img src="/svg/search.svg" alt="search" />
           Поиск
         </button>
