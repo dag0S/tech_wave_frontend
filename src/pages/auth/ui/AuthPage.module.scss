@@ -27,7 +27,6 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-
     height: 100%;
   }
 
@@ -38,22 +37,9 @@
   &__form-wrap {
     width: 469px;
     height: 483px;
-    padding: 20px;
-    border-radius: 4px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-    background: var(--header-color);
-  }
-
-  &__title {
-    font-weight: 700;
-    font-size: 36px;
-    margin-bottom: 20px;
-
-    text-align: center;
   }
 
   &__to-login {
@@ -61,14 +47,7 @@
       color: var(--link-color);
       text-decoration: underline;
       text-decoration-skip-ink: none;
-
       cursor: pointer;
     }
   }
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
