@@ -1,10 +1,9 @@
 import { FC } from "react";
+import cn from "classnames";
 import { IContainer } from "./ContainerProps";
 
 import styles from "./Container.module.scss";
 
-const Container: FC<IContainer> = ({ children }) => {
-  return <div className={styles["container"]}>{children}</div>;
+export const Container: FC<IContainer> = ({ children, className = "" }) => {
+  return <div className={cn(styles["container"], className)}>{children}</div>;
 };
-
-export default Container;

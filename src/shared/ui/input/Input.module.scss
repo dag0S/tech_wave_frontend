@@ -1,0 +1,24 @@
+.input-container {
+  display: flex;
+  flex-direction: column-reverse;
+
+  label {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  input {
+    border-radius: 4px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+
+    font-size: 16px;
+    color: var(--main-text-color);
+
+    &::placeholder {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}

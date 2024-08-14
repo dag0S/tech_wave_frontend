@@ -28,19 +28,7 @@
     margin-bottom: 6px;
   }
 
-  &__add-to-cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-
+  &__btn {
     width: 100%;
-    border-radius: 4px;
-    padding: 3px 58px;
-
-    background: var(--button-color);
-
-    font-weight: 500;
-    font-size: 20px;
   }
 }

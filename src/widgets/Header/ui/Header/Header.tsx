@@ -1,11 +1,11 @@
-import { Container } from "@/shared/ui";
 import { FC } from "react";
+import { Container } from "@/shared/ui";
 import Navigation from "../navigation/Navigation";
 import Logo from "../logo/Logo";
 
 import styles from "./Header.module.scss";
 
-const Header: FC = () => {
+export const Header: FC = () => {
   return (
     <header className={styles["header"]}>
       <Container>
@@ -18,4 +18,3 @@ const Header: FC = () => {
   );
 };
 
-export default Header;

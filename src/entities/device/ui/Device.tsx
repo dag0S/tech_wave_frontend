@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "@/shared/lib/react-router";
+import { Button } from "@/shared/ui";
 import { IDevice } from "./DeviceProps";
 
 import styles from "./Device.module.scss";
@@ -17,9 +18,10 @@ const Device: FC<IDevice> = ({ id, name, price, imageUrl }) => {
       <div className={styles["device__price"]}>
         <span>{price} ₽</span>
       </div>
-      <button className={styles["device__add-to-cart"]}>
-        <img src="/svg/cart.svg" alt="cart" />В корзину
-      </button>
+      <Button className={styles['device__btn']}>
+        <img src="/svg/cart.svg" alt="cart" />
+        <span>В корзину</span>
+      </Button>
     </div>
   );
 };
