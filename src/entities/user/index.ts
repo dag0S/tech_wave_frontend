@@ -1,4 +1,3 @@
-import { authApi } from "./api/api";
-import { authSlice } from "./model/slice";
-
-export { authApi, authSlice };
+export { authApi } from "./api/api";
+export { userSlice } from "./model/slice";
+export type { UserState } from "./model/slice";

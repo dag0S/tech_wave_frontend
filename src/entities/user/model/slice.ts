@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../api/api";
 
-interface AuthState {
+export interface UserState {
   token: { token: string } | null;
   isAuthenticated: boolean;
 }
 
-const initialState: AuthState = {
+const initialState: UserState = {
   token: null,
   isAuthenticated: false,
 };
 
-export const authSlice = createSlice({
-  name: "authSlice",
+export const userSlice = createSlice({
+  name: "userSlice",
   initialState,
   reducers: {
     logout: () => initialState,
@@ -37,4 +37,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout } = userSlice.actions;
