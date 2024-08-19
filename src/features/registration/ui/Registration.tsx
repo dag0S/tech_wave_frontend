@@ -1,28 +1,22 @@
-import { FC, FormEvent, useCallback, useEffect } from "react";
+import { FC, FormEvent, useCallback, useState } from "react";
 import { Button, Input } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { registrationActions } from "../model/slice";
 import { useRegisterMutation } from "@/entities/user/api/api";
 import { useNavigate } from "react-router-dom";
 import { paths } from "@/shared/lib/react-router";
+import { isErrorWithMessage } from "@/shared/utils";
 
 import styles from "./Registration.module.scss";
-
-interface MyError {
-  data: {
-    message?: string;
-  };
-  status: number;
-}
 
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();
   const { email, name, password } = useAppSelector(
     (state) => state.registrationSlice
   );
-  const { isAuthenticated } = useAppSelector((state) => state.userSlice);
-  const [userRegistration, { isLoading, error }] = useRegisterMutation();
+  const [userRegistration, { isLoading }] = useRegisterMutation();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handlerChangeEmail = useCallback(
     (val: string) => {
@@ -46,31 +40,31 @@ export const Registration: FC = () => {
   );
 
   const handlerSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (!isLoading) {
-        userRegistration({ email, name, password });
+    async (e: FormEvent<HTMLFormElement>) => {
+      try {
+        e.preventDefault();
+
+        if (!isLoading) {
+          await userRegistration({ email, name, password }).unwrap();
+          navigate(paths.home);
+        }
+      } catch (err) {
+        const mayBeError = isErrorWithMessage(err);
+
+        if (mayBeError) {
+          setError(err.data.message);
+        } else {
+          setError("Неизвестная ошибка");
+        }
       }
     },
-    [email, name, password, userRegistration, isLoading]
+    [email, name, password, userRegistration, isLoading, navigate]
   );
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate(paths.home);
-    }
-  }, [isAuthenticated, navigate]);
-
-  const myErr = error as MyError;
 
   return (
     <form className={styles["form"]} onSubmit={handlerSubmit}>
       <h2 className={styles["form__title"]}>Регистрация</h2>
-      {myErr && (
-        <div style={{ color: "red" }}>
-          {myErr.data?.message || "Неизвестная ошибка"}
-        </div>
-      )}
+      {error && <div style={{ color: "red" }}>{error}</div>}
       <Input
         id="email"
         name="email"
