@@ -23,6 +23,7 @@ const Navigation: FC = () => {
 
   const handlerLogout = useCallback(() => {
     dispatch(logout());
+    localStorage.removeItem(import.meta.env.VITE_TOKEN);
   }, [dispatch]);
 
   return (

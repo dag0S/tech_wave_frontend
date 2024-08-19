@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../api/api";
 
 export interface UserState {
-  token: { token: string } | null;
+  token?: { token: string } | null;
   isAuthenticated: boolean;
 }
 

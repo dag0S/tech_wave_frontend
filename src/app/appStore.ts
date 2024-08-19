@@ -6,6 +6,7 @@ import {
   registrationReducers,
   RegistrationState,
 } from "@/features/registration";
+import { listenerMiddleware } from "@/entities/user/model/authMiddleware";
 
 export interface StateSchema {
   loginSlice: LoginState;
@@ -22,8 +23,12 @@ export function createReduxStore() {
     [baseApi.reducerPath]: baseApi.reducer,
   };
 
-  return configureStore<StateSchema>({
+  return configureStore({
     reducer: rootReducers,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware()
+        .concat(baseApi.middleware)
+        .prepend(listenerMiddleware.middleware),
   });
 }
 
