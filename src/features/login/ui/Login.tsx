@@ -1,15 +1,19 @@
-import { FC, FormEvent, useCallback } from "react";
+import { FC, FormEvent, useCallback, useEffect } from "react";
 import { Button, Input } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { useLoginMutation } from "@/entities/user/api/api";
 import { setEmail, setPassword } from "../model/slice";
+import { useNavigate } from "react-router-dom";
+import { paths } from "@/shared/lib/react-router";
 
 import styles from "./Login.module.scss";
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();
   const { email, password } = useAppSelector((state) => state.loginSlice);
-  const [userLogin] = useLoginMutation();
+  const { isAuthenticated } = useAppSelector((state) => state.userSlice);
+  const [userLogin, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
 
   const handlerChangeEmail = useCallback(
     (value: string) => {
@@ -28,10 +32,18 @@ export const Login: FC = () => {
   const handlerSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      userLogin({ email, password });
+      if (!isLoading) {
+        userLogin({ email, password });
+      }
     },
-    [email, password, userLogin]
+    [email, password, userLogin, isLoading]
   );
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(paths.home);
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <form className={styles["form"]} onSubmit={handlerSubmit}>
@@ -54,7 +66,9 @@ export const Login: FC = () => {
         value={password}
         onChange={handlerChangePassword}
       />
-      <Button type="submit">Войти</Button>
+      <Button type="submit" disable={isLoading}>
+        Войти
+      </Button>
     </form>
   );
 };

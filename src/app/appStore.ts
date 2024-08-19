@@ -1,16 +1,22 @@
-import { configureStore, ReducersMapObject, Store } from "@reduxjs/toolkit";
+import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { baseApi } from "@/shared/api";
 import { userSlice, UserState } from "@/entities/user";
 import { loginSlice, LoginState } from "@/features/login/model/slice";
+import {
+  registrationReducers,
+  RegistrationState,
+} from "@/features/registration";
 
 export interface StateSchema {
   loginSlice: LoginState;
+  registrationSlice: RegistrationState;
   userSlice: UserState;
   [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
 export function createReduxStore() {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    registrationSlice: registrationReducers,
     loginSlice: loginSlice.reducer,
     userSlice: userSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,

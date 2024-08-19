@@ -8,11 +8,14 @@ export const Button: FC<ButtonProps> = ({
   className,
   children,
   theme = ButtonTheme.PRIMARY,
+  disable,
   ...otherProps
 }) => {
   return (
     <button
-      className={cn(styles["btn"], className, styles[theme])}
+      className={cn(styles["btn"], className, styles[theme], {
+        [styles["disable"]]: disable,
+      })}
       {...otherProps}
     >
       {children}

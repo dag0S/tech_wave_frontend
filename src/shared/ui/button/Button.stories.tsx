@@ -59,3 +59,12 @@ export const Outline_dark: Story = {
   },
   decorators: [StyleDecorator(Theme.DARK)],
 };
+
+export const Disable: Story = {
+  args: {
+    children: "Text",
+    theme: ButtonTheme.PRIMARY,
+    disable: true,
+  },
+  decorators: [StyleDecorator(Theme.LIGHT)],
+};
