@@ -23,9 +23,9 @@ const AuthPage: FC = memo(() => {
           <div className={styles["auth__to-login"]}>
             {isLogin
               ? t("У вас нет учетной записи?")
-              : "У вас уже есть учетная запись?"}{" "}
+              : t("У вас уже есть учетная запись?")}{" "}
             <span onClick={handlerToggleLogin}>
-              {isLogin ? "Зарегистрироваться" : "Войти"}
+              {isLogin ? t("Зарегистрироваться") : t("Войти")}
             </span>
           </div>
         </Card>

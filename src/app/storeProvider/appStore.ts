@@ -15,7 +15,7 @@ export interface StateSchema {
   [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
-export function createReduxStore() {
+export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     registrationSlice: registrationReducers,
     loginSlice: loginSlice.reducer,
@@ -25,6 +25,7 @@ export function createReduxStore() {
 
   return configureStore({
     reducer: rootReducers,
+    preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
         .concat(baseApi.middleware)
@@ -32,7 +33,5 @@ export function createReduxStore() {
   });
 }
 
-const store = createReduxStore();
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof createReduxStore>["getState"];
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];

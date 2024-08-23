@@ -1,20 +1,15 @@
 import { FC } from "react";
-import { Provider } from "react-redux";
 import { ThemeProvider } from "@/entities/theme";
 import { ProvidersProps } from "./providersProps";
-import { createReduxStore } from "../appStore";
 import { AuthProvider } from "../authProvider";
+import { StoreProvider } from "../storeProvider";
 
-const Providers: FC<ProvidersProps> = ({ children }) => {
-  const store = createReduxStore();
-
+export const Providers: FC<ProvidersProps> = ({ children }) => {
   return (
-    <Provider store={store}>
+    <StoreProvider>
       <AuthProvider>
         <ThemeProvider>{children}</ThemeProvider>
       </AuthProvider>
-    </Provider>
+    </StoreProvider>
   );
 };
-
-export default Providers;
