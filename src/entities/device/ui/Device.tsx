@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "@/shared/lib/react-router";
 import { Button } from "@/shared/ui";
@@ -6,7 +6,7 @@ import { IDevice } from "./DeviceProps";
 
 import styles from "./Device.module.scss";
 
-const Device: FC<IDevice> = ({ id, name, price, imageUrl }) => {
+const Device: FC<IDevice> = memo(({ id, name, price, imageUrl }) => {
   return (
     <div className={styles["device"]}>
       <Link to={`${paths.product}/:${id}`}>
@@ -18,12 +18,12 @@ const Device: FC<IDevice> = ({ id, name, price, imageUrl }) => {
       <div className={styles["device__price"]}>
         <span>{price} ₽</span>
       </div>
-      <Button className={styles['device__btn']}>
+      <Button className={styles["device__btn"]}>
         <img src="/svg/cart.svg" alt="cart" />
         <span>В корзину</span>
       </Button>
     </div>
   );
-};
+});
 
 export default Device;

@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Container } from "@/shared/ui";
 import Navigation from "../navigation/Navigation";
 import Logo from "../logo/Logo";
 
 import styles from "./Header.module.scss";
 
-export const Header: FC = () => {
+export const Header: FC = memo(() => {
   return (
     <header className={styles["header"]}>
       <Container>
@@ -16,5 +16,4 @@ export const Header: FC = () => {
       </Container>
     </header>
   );
-};
-
+});

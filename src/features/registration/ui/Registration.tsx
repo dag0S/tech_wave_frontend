@@ -1,15 +1,16 @@
-import { FC, FormEvent, useCallback, useState } from "react";
+import { FC, FormEvent, memo, useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button, Input } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { registrationActions } from "../model/slice";
 import { useRegisterMutation } from "@/entities/user/api/api";
-import { useNavigate } from "react-router-dom";
 import { paths } from "@/shared/lib/react-router";
 import { isErrorWithMessage } from "@/shared/utils";
 
 import styles from "./Registration.module.scss";
 
-export const Registration: FC = () => {
+export const Registration: FC = memo(() => {
   const dispatch = useAppDispatch();
   const { email, name, password } = useAppSelector(
     (state) => state.registrationSlice
@@ -17,6 +18,7 @@ export const Registration: FC = () => {
   const [userRegistration, { isLoading }] = useRegisterMutation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const { t } = useTranslation("auth");
 
   const handlerChangeEmail = useCallback(
     (val: string) => {
@@ -54,23 +56,23 @@ export const Registration: FC = () => {
         if (mayBeError) {
           setError(err.data.message);
         } else {
-          setError("Неизвестная ошибка");
+          setError(t("Неизвестная ошибка"));
         }
       }
     },
-    [email, name, password, userRegistration, isLoading, navigate]
+    [email, name, password, userRegistration, isLoading, navigate, t]
   );
 
   return (
     <form className={styles["form"]} onSubmit={handlerSubmit}>
-      <h2 className={styles["form__title"]}>Регистрация</h2>
+      <h2 className={styles["form__title"]}>{t("Регистрация")}</h2>
       {error && <div style={{ color: "red" }}>{error}</div>}
       <Input
         id="email"
         name="email"
         type="email"
-        placeholder="Введите email"
-        label="Email"
+        placeholder={t("Введите email")}
+        label={t("Email")}
         value={email}
         onChange={handlerChangeEmail}
       />
@@ -78,8 +80,8 @@ export const Registration: FC = () => {
         id="name"
         name="name"
         type="text"
-        placeholder="Введите имя"
-        label="Имя"
+        placeholder={t("Введите имя")}
+        label={t("Имя")}
         value={name}
         onChange={handlerChangeName}
       />
@@ -87,14 +89,14 @@ export const Registration: FC = () => {
         id="password"
         name="password"
         type="password"
-        placeholder="Введите пароль"
-        label="Пароль"
+        placeholder={t("Введите пароль")}
+        label={t("Пароль")}
         value={password}
         onChange={handlerChangePassword}
       />
       <Button type="submit" disable={isLoading}>
-        Зарегистрироваться
+        {t("Зарегистрироваться")}
       </Button>
     </form>
   );
-};
+});

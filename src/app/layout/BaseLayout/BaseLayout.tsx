@@ -1,29 +1,38 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Header } from "@/widgets/Header";
+import { PageLoader } from "@/widgets/pageLoader";
 import { Announcement } from "@/shared/ui";
 
 const BaseLayout = () => {
+  const { t } = useTranslation();
+
   return (
-    <>
+    <Suspense fallback="">
       <div className="wrapper">
         <Announcement>
           <span>
-            Работу выполнил{" "}
+            {t("Работу выполнил")}{" "}
             <a href="https://github.com/dag0S" target="_blank">
-              Данила Государев
+              {t("Данила Государев")}
             </a>
             .
           </span>
         </Announcement>
         <Header />
         <main>
-          <Outlet />
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
         </main>
         <Announcement>
-          Это fake сайт. Никаких реальных транзакций и операций не производится!
+          {t(
+            "Это fake сайт. Никаких реальных транзакций и операций не производится!"
+          )}
         </Announcement>
       </div>
-    </>
+    </Suspense>
   );
 };
 

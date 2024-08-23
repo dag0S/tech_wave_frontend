@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Device } from "@/entities/device";
 import { Container } from "@/shared/ui";
 
@@ -12,7 +12,7 @@ const data = [
   },
 ];
 
-export const HomePage: FC = () => {
+const HomePage: FC = memo(() => {
   return (
     <div>
       <Container>
@@ -25,4 +25,6 @@ export const HomePage: FC = () => {
       </Container>
     </div>
   );
-};
+});
+
+export default HomePage;

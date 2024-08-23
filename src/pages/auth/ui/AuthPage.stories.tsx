@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { AuthPage } from "./AuthPage";
+import AuthPage  from "./AuthPage";
 import { Theme } from "@/entities/theme";
 import { StyleDecorator } from "@/shared/lib/storybook";
 

@@ -1,17 +1,20 @@
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { paths } from "@/shared/lib/react-router";
-import { ChangeTheme } from "@/features/changeTheme";
 import { Modal } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { logout } from "@/entities/user/model/slice";
+import { ChangeTheme } from "@/features/changeTheme";
+import { ChangeLang } from "@/features/changeLang";
 
 import styles from "./Navigation.module.scss";
 
-const Navigation: FC = () => {
+const Navigation: FC = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated } = useAppSelector((state) => state.userSlice);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
@@ -34,22 +37,25 @@ const Navigation: FC = () => {
       <li>
         <button className={styles["navigation__item"]} onClick={handleOpen}>
           <img src="/svg/search.svg" alt="search" />
-          Поиск
+          {t("Поиск")}
         </button>
       </li>
       <li>
         <ChangeTheme className={styles["navigation__item"]} />
       </li>
       <li>
+        <ChangeLang className={styles["navigation__item"]} />
+      </li>
+      <li>
         <Link to={paths.favoriteList} className={styles["navigation__item"]}>
           <img src="/svg/favorite.svg" alt="favorite" />
-          Избранное
+          {t("Избранное")}
         </Link>
       </li>
       <li>
         <Link to={paths.cart} className={styles["navigation__item"]}>
           <img src="/svg/cart.svg" alt="cart" />
-          Корзина
+          {t("Корзина")}
         </Link>
       </li>
       <li>
@@ -59,17 +65,17 @@ const Navigation: FC = () => {
             onClick={handlerLogout}
           >
             <img src="/svg/logout.svg" alt="logout" />
-            Выйти
+            {t("Выйти")}
           </button>
         ) : (
           <Link to={paths.auth} className={styles["navigation__item"]}>
             <img src="/svg/user.svg" alt="user" />
-            Войти
+            {t("Войти")}
           </Link>
         )}
       </li>
     </ul>
   );
-};
+});
 
 export default Navigation;
