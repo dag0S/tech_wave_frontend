@@ -4,6 +4,9 @@ import { paths } from "@/shared/lib/react-router";
 import BaseLayout from "../layout/BaseLayout/BaseLayout";
 import { HomePage } from "@/pages/home";
 import { AuthPage } from "@/pages/auth";
+import { CartPage } from "@/pages/cart";
+import { FavoritesPage } from "@/pages/favorites";
+import { NotFoundPage } from "@/pages/notFound";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ const router = createBrowserRouter([
       {
         path: paths.auth,
         element: <AuthPage />,
+      },
+      {
+        path: paths.cart,
+        element: <CartPage />,
+      },
+      {
+        path: paths.favorites,
+        element: <FavoritesPage />,
+      },
+      {
+        path: paths.notFound,
+        element: <NotFoundPage />,
       },
     ],
   },

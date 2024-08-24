@@ -1,10 +1,10 @@
 export const paths = {
   home: "/",
   cart: "/cart",
-  favoriteList: "/favorite-list",
+  favorites: "/favorites",
   product: "/product",
   auth: "/auth",
   profile: "/profile",
   admin: "/admin",
-  notFound: "/not-found",
+  notFound: "/*",
 };

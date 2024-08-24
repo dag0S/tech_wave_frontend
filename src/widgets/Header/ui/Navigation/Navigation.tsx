@@ -47,7 +47,7 @@ const Navigation: FC = memo(() => {
         <ChangeLang className={styles["navigation__item"]} />
       </li>
       <li>
-        <Link to={paths.favoriteList} className={styles["navigation__item"]}>
+        <Link to={paths.favorites} className={styles["navigation__item"]}>
           <img src="/svg/favorite.svg" alt="favorite" />
           {t("Избранное")}
         </Link>

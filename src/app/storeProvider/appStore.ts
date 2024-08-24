@@ -33,5 +33,4 @@ export function createReduxStore(initialState?: StateSchema) {
   });
 }
 
-export type RootState = ReturnType<typeof createReduxStore>["getState"];
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
