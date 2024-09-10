@@ -5,14 +5,17 @@ import { Button } from "@/shared/ui";
 import { IDevice } from "./DeviceProps";
 
 import styles from "./Device.module.scss";
+import { useTranslation } from "react-i18next";
 
-const Device: FC<IDevice> = memo(({ id, name, price, imageUrl }) => {
+export const Device: FC<IDevice> = memo(({ id, name, price, imageUrl }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles["device"]}>
-      <Link to={`${paths.product}/:${id}`}>
+      <Link to={`${paths.product}/${id}`}>
         <img className={styles["device__image"]} src={imageUrl} alt={name} />
       </Link>
-      <Link to={`${paths.product}/:${id}`}>
+      <Link to={`${paths.product}/${id}`}>
         <h6 className={styles["device__title"]}>{name}</h6>
       </Link>
       <div className={styles["device__price"]}>
@@ -20,10 +23,8 @@ const Device: FC<IDevice> = memo(({ id, name, price, imageUrl }) => {
       </div>
       <Button className={styles["device__btn"]}>
         <img src="/svg/cart.svg" alt="cart" />
-        <span>В корзину</span>
+        <span>{t("В корзину")}</span>
       </Button>
     </div>
   );
 });
-
-export default Device;

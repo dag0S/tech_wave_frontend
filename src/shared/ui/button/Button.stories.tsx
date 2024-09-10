@@ -36,6 +36,14 @@ export const Outline: Story = {
   decorators: [StyleDecorator(Theme.LIGHT)],
 };
 
+export const Red: Story = {
+  args: {
+    children: "Text",
+    theme: ButtonTheme.RED,
+  },
+  decorators: [StyleDecorator(Theme.LIGHT)],
+};
+
 export const Primary_dark: Story = {
   args: {
     children: "Text",

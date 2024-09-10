@@ -1,30 +1,76 @@
-.loader {
-  width: 48px;
-  height: 48px;
-}
-
 .spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid var(--announcement-color);
   border-radius: 50%;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+
+  &::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
 }
-.spinner::after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 3px solid;
-  border-color: var(--button-color) transparent;
+
+.S {
+  .loader {
+    width: 24px;
+    height: 24px;
+  }
+
+  .spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--announcement-color);
+    &::after {
+      width: 18px;
+      height: 18px;
+      border: 2px solid;
+      border-color: var(--button-color) transparent;
+    }
+  }
+}
+
+.M {
+  .loader {
+    width: 48px;
+    height: 48px;
+  }
+
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--announcement-color);
+    &::after {
+      width: 40px;
+      height: 40px;
+      border: 3px solid;
+      border-color: var(--button-color) transparent;
+    }
+  }
+}
+
+.L {
+  .loader {
+    width: 68px;
+    height: 68px;
+  }
+
+  .spinner {
+    width: 68px;
+    height: 68px;
+    border: 4px solid var(--announcement-color);
+    &::after {
+      width: 57px;
+      height: 57px;
+      border: 4px solid;
+      border-color: var(--button-color) transparent;
+    }
+  }
 }
 
 @keyframes rotation {

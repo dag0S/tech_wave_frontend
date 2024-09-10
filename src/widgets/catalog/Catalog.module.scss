@@ -1,0 +1,29 @@
+.catalog {
+  width: 100%;
+  border-radius: 4px;
+  background: var(--header-color);
+
+  &__item {
+    font-size: 20px;
+    font-weight: 400;
+
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    &--selected {
+      background: rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &--isLoading {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

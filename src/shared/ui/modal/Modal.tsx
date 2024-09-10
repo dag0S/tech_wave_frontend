@@ -1,9 +1,9 @@
 import { FC, MouseEvent, useCallback, useEffect } from "react";
 import cn from "classnames";
 import { ModalProps } from "./ModalProps";
+import { Portal } from "../portal/Portal";
 
 import styles from "./Modal.module.scss";
-import { Portal } from "../portal/Portal";
 
 export const Modal: FC<ModalProps> = ({
   children,

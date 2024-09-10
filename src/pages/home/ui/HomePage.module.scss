@@ -1,0 +1,18 @@
+.home-page {
+  padding-top: 30px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 277px;
+    gap: 10px;
+    margin-bottom: 60px;
+  }
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__catalog {
+    align-self: start;
+  }
+}

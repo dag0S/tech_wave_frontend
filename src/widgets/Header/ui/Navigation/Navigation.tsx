@@ -2,11 +2,12 @@ import { FC, memo, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { paths } from "@/shared/lib/react-router";
-import { Modal } from "@/shared/ui";
+import { Loader, Modal, LoaderSize } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { logout } from "@/entities/user/model/slice";
 import { ChangeTheme } from "@/features/changeTheme";
 import { ChangeLang } from "@/features/changeLang";
+import { useCurrentQuery } from "@/entities/user";
 
 import styles from "./Navigation.module.scss";
 
@@ -14,6 +15,7 @@ const Navigation: FC = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated } = useAppSelector((state) => state.userSlice);
   const dispatch = useAppDispatch();
+  const { isLoading } = useCurrentQuery();
   const { t } = useTranslation();
 
   const handleClose = useCallback(() => {
@@ -59,7 +61,11 @@ const Navigation: FC = memo(() => {
         </Link>
       </li>
       <li>
-        {isAuthenticated ? (
+        {isLoading ? (
+          <div className={styles["navigation__item"]}>
+            <Loader size={LoaderSize.S} />
+          </div>
+        ) : isAuthenticated ? (
           <button
             className={styles["navigation__item"]}
             onClick={handlerLogout}
