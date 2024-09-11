@@ -1,4 +1,4 @@
-import { StateSchema } from "@/app/appStore";
+import { StateSchema } from "@/app/storeProvider";
 import { fetchBaseQuery, retry } from "@reduxjs/toolkit/query";
 
 const BaseQuery = fetchBaseQuery({

@@ -1,17 +1,20 @@
 import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { baseApi } from "@/shared/api";
-import { userSlice, UserState } from "@/entities/user";
+import { listenerMiddleware, userSlice, UserState } from "@/entities/user";
 import { loginSlice, LoginState } from "@/features/login/model/slice";
 import {
   registrationReducers,
   RegistrationState,
 } from "@/features/registration";
-import { listenerMiddleware } from "@/entities/user/model/authMiddleware";
+import { categorySlice, CategoryState } from "@/entities/category";
+import { brandSlice, BrandState } from "@/entities/brand";
 
 export interface StateSchema {
   loginSlice: LoginState;
   registrationSlice: RegistrationState;
   userSlice: UserState;
+  categorySlice: CategoryState;
+  brandSlice: BrandState;
   [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
@@ -20,6 +23,8 @@ export function createReduxStore(initialState?: StateSchema) {
     registrationSlice: registrationReducers,
     loginSlice: loginSlice.reducer,
     userSlice: userSlice.reducer,
+    categorySlice: categorySlice.reducer,
+    brandSlice: brandSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
   };
 

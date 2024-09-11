@@ -2,6 +2,7 @@
   width: 100%;
   border-radius: 4px;
   background: var(--header-color);
+  overflow: hidden;
 
   &__item {
     font-size: 20px;
@@ -17,6 +18,9 @@
 
     &--selected {
       background: rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--main-text-color);
+      border-left: 0;
+      border-right: 0;
     }
   }
 

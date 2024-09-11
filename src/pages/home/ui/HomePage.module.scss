@@ -12,7 +12,9 @@
     margin-bottom: 30px;
   }
 
-  &__catalog {
-    align-self: start;
+  &__catalogs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 }

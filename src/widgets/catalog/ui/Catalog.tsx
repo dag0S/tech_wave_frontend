@@ -1,12 +1,20 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import cn from "classnames";
 import { CatalogProps } from "./CatalogProps";
 import { Loader } from "@/shared/ui";
 
 import styles from "./Catalog.module.scss";
 
-export const Catalog: FC<CatalogProps> = ({ className, data, isLoading }) => {
-  const [selected, setSelected] = useState<number | undefined>();
+export const Catalog: FC<CatalogProps> = ({
+  className,
+  data,
+  isLoading,
+  selected,
+  onSelect,
+}) => {
+  const handlerChooseItem = (id: number) => {
+    onSelect(id);
+  };
 
   if (isLoading) {
     return (
@@ -19,10 +27,6 @@ export const Catalog: FC<CatalogProps> = ({ className, data, isLoading }) => {
       </div>
     );
   }
-
-  const handlerChooseItem = (id: number) => {
-    setSelected(id);
-  };
 
   return (
     <div className={cn(styles["catalog"], className)}>
