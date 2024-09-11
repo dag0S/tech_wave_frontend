@@ -14,6 +14,7 @@ import {
   useGetAllBrandsQuery,
 } from "@/entities/brand";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
+import { IParams } from "@/entities/device";
 
 import styles from "./HomePage.module.scss";
 
@@ -27,6 +28,11 @@ const HomePage: FC = memo(() => {
     (state) => state.categorySlice.category
   );
   const selectedBrand = useAppSelector((state) => state.brandSlice.brand);
+
+  const params: IParams = {
+    brandId: selectedBrand,
+    categoryId: selectedCategory,
+  };
 
   const onSelectCategory = useCallback(
     (id: number) => {
@@ -58,7 +64,7 @@ const HomePage: FC = memo(() => {
                 <img src="/svg/close.svg" alt="X" />
               </Button>
             </div>
-            <DevicesList />
+            <DevicesList params={params} />
           </div>
           <div className={styles["home-page__catalogs"]}>
             <Catalog

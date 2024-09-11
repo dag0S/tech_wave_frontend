@@ -14,7 +14,11 @@ export const brandSlice = createSlice({
   reducers: {
     resetBrand: () => initialState,
     selectBrand: (state, action: PayloadAction<number>) => {
-      state.brand = action.payload;
+      if (state.brand === action.payload) {
+        state.brand = undefined;
+      } else {
+        state.brand = action.payload;
+      }
     },
   },
 });

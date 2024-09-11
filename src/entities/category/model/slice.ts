@@ -14,7 +14,11 @@ export const categorySlice = createSlice({
   reducers: {
     resetCategory: () => initialState,
     selectCategory: (state, action: PayloadAction<number>) => {
-      state.category = action.payload;
+      if (state.category === action.payload) {
+        state.category = undefined;
+      } else {
+        state.category = action.payload;
+      }
     },
   },
 });

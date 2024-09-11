@@ -1,13 +1,26 @@
 import { baseApi } from "@/shared/api";
-import { DeviceData, IDevice, ResponseDeviceData } from "../model/types";
+import {
+  DeviceData,
+  IDevice,
+  IParams,
+  ResponseDeviceData,
+} from "../model/types";
 
 export const deviceApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllDevices: builder.query<ResponseDeviceData, void>({
-      query: () => ({
-        url: "/device",
-        method: "GET",
-      }),
+    getAllDevices: builder.query<ResponseDeviceData, IParams>({
+      query: (params) => {
+        const { brandId, categoryId } = params;
+        const queryParams: string[] = [];
+
+        if (brandId) queryParams.push(`brandId=${brandId}`);
+        if (categoryId) queryParams.push(`categoryId=${categoryId}`);
+
+        return {
+          url: `/device?${queryParams.join("&")}`,
+          method: "GET",
+        };
+      },
     }),
     getDeviceById: builder.query<IDevice, string>({
       query: (deviceId) => ({

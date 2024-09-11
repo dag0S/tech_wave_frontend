@@ -13,3 +13,8 @@ export interface ResponseDeviceData {
   devicesCount: number;
   devices: IDevice[];
 }
+
+export interface IParams {
+  brandId?: number;
+  categoryId?: number;
+}

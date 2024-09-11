@@ -8,3 +8,4 @@ export { Modal } from "./modal/Modal";
 export { Card } from "./card/Card";
 export { Loader } from "./loader/Loader";
 export { LoaderSize } from "./loader/LoaderProps";
+export { Skeleton } from "./skeleton/Skeleton";
