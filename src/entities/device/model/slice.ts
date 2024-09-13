@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { deviceApi } from "../api/api";
 import { IDevice } from "./types";
 
-interface InitialState {
+export interface DeviceState {
   devices: IDevice[] | null;
   devicesCount: number;
 }
 
-const initialState: InitialState = {
+const initialState: DeviceState = {
   devices: null,
   devicesCount: 0,
 };

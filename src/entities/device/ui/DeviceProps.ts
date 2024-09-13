@@ -1,6 +1,6 @@
-export interface IDevice {
-  id: number;
-  name: string;
-  price: number;
+import { IDevice } from "../model/types";
+
+export interface DeviceProps {
+  device: IDevice;
   imageUrl?: string;
 }

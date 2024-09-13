@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import cn from "classnames";
-import { ButtonProps, ButtonTheme } from "./ButtonProps";
+import { ButtonProps, ButtonSize, ButtonTheme } from "./ButtonProps";
 
 import styles from "./Button.module.scss";
 
@@ -9,12 +9,13 @@ export const Button: FC<ButtonProps> = memo(
     className,
     children,
     theme = ButtonTheme.PRIMARY,
+    size = ButtonSize.M,
     disable,
     ...otherProps
   }) => {
     return (
       <button
-        className={cn(styles["btn"], className, styles[theme], {
+        className={cn(styles["btn"], className, styles[size], styles[theme], {
           [styles["disable"]]: disable,
         })}
         {...otherProps}

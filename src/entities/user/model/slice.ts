@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../api/api";
 
 export interface UserState {
-  token?: { token: string } | null;
+  token?: string | null;
   isAuthenticated: boolean;
 }
 
@@ -20,18 +20,18 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
-        state.token = action.payload;
+        state.token = action.payload.token;
         state.isAuthenticated = true;
       })
       .addMatcher(
         authApi.endpoints.register.matchFulfilled,
         (state, action) => {
-          state.token = action.payload;
+          state.token = action.payload.token;
           state.isAuthenticated = true;
         }
       )
       .addMatcher(authApi.endpoints.current.matchFulfilled, (state, action) => {
-        state.token = action.payload;
+        state.token = action.payload.token;
         state.isAuthenticated = true;
       });
   },

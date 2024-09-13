@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+    position: relative;
 
     padding: 4px;
     border-radius: 4px;
@@ -19,5 +20,21 @@
     &:hover {
       background: rgba(0, 0, 0, 0.15);
     }
+  }
+
+  &__cart-items {
+    font-size: 12px;
+    background: var(--button-color);
+    border-radius: 43%;
+    padding: 2px 3px;
+    min-width: 15px;
+    
+    position: absolute;
+    top: 1px;
+    right: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

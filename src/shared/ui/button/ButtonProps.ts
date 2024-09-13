@@ -7,9 +7,16 @@ export enum ButtonTheme {
   RED = "red",
 }
 
+export enum ButtonSize {
+  S = "S",
+  M = "M",
+  L = "L",
+}
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className?: string;
   theme?: ButtonTheme;
+  size?: ButtonSize;
   disable?: boolean;
 }

@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useState } from "react";
+import { FC, memo, useCallback, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { paths } from "@/shared/lib/react-router";
@@ -17,6 +17,11 @@ const Navigation: FC = memo(() => {
   const dispatch = useAppDispatch();
   const { isLoading } = useCurrentQuery();
   const { t } = useTranslation();
+  const items = useAppSelector((state) => state.cartSlice.items);
+  const amountItemsInCart = useMemo(
+    () => items.reduce((amount, item) => item.amount + amount, 0),
+    [items]
+  );
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
@@ -56,6 +61,11 @@ const Navigation: FC = memo(() => {
       </li>
       <li>
         <Link to={paths.cart} className={styles["navigation__item"]}>
+          {amountItemsInCart > 0 && (
+            <span className={styles["navigation__cart-items"]}>
+              {amountItemsInCart > 99 ? "99+" : amountItemsInCart}
+            </span>
+          )}
           <img src="/svg/cart.svg" alt="cart" />
           {t("Корзина")}
         </Link>
