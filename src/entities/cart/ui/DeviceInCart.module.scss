@@ -8,6 +8,8 @@
   position: relative;
 
   &__left-wrap {
+    display: inline-block;
+    
     img {
       width: 147px;
       border-radius: 4px;

@@ -1,6 +1,6 @@
 import { FC, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { Button, ButtonTheme, Container } from "@/shared/ui";
+import { Button, ButtonTheme, Container, Title } from "@/shared/ui";
 import { DevicesList } from "@/widgets/devicesList";
 import { Catalog } from "@/widgets/catalog";
 import {
@@ -15,23 +15,39 @@ import {
 } from "@/entities/brand";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { IParams } from "@/entities/device";
+import { RangeSlider } from "@/widgets/rangeSlider";
+import {
+  changePriceFrom,
+  changePriceTo,
+  resetRangePrice,
+} from "@/entities/rangePrice";
+import { useDebounce } from "@/shared/lib/hooks";
 
 import styles from "./HomePage.module.scss";
 
 const HomePage: FC = memo(() => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
   const { data: categoryData, isLoading: categoryIsLoading } =
     useGetAllCategoriesQuery();
-  const { data: brandData, isLoading: brandIsLoading } = useGetAllBrandsQuery();
-  const dispatch = useAppDispatch();
   const selectedCategory = useAppSelector(
     (state) => state.categorySlice.category
   );
+
+  const { data: brandData, isLoading: brandIsLoading } = useGetAllBrandsQuery();
   const selectedBrand = useAppSelector((state) => state.brandSlice.brand);
+
+  const { priceFrom, priceTo } = useAppSelector((state) => state.rangePrice);
+
+  const debouncedPriceFrom = useDebounce(priceFrom, 500);
+  const debouncedPriceTo = useDebounce(priceTo, 500);
 
   const params: IParams = {
     brandId: selectedBrand,
     categoryId: selectedCategory,
+    priceFrom: debouncedPriceFrom,
+    priceTo: debouncedPriceTo,
   };
 
   const onSelectCategory = useCallback(
@@ -48,9 +64,24 @@ const HomePage: FC = memo(() => {
     [dispatch]
   );
 
+  const onChangePriceFrom = useCallback(
+    (price: number) => {
+      dispatch(changePriceFrom(price));
+    },
+    [dispatch]
+  );
+
+  const onChangePriceTo = useCallback(
+    (price: number) => {
+      dispatch(changePriceTo(price));
+    },
+    [dispatch]
+  );
+
   const onResetFilters = useCallback(() => {
     dispatch(resetBrand());
     dispatch(resetCategory());
+    dispatch(resetRangePrice());
   }, [dispatch]);
 
   return (
@@ -67,20 +98,35 @@ const HomePage: FC = memo(() => {
             <DevicesList params={params} />
           </div>
           <div className={styles["home-page__catalogs"]}>
-            <Catalog
-              className={styles["home-page__catalog"]}
-              data={categoryData}
-              isLoading={categoryIsLoading}
-              onSelect={onSelectCategory}
-              selected={selectedCategory}
-            />
-            <Catalog
-              className={styles["home-page__catalog"]}
-              data={brandData}
-              isLoading={brandIsLoading}
-              onSelect={onSelectBrand}
-              selected={selectedBrand}
-            />
+            <div className={styles["home-page__catalogs-row"]}>
+              <Title>{t("Категории")}</Title>
+              <Catalog
+                data={categoryData}
+                isLoading={categoryIsLoading}
+                onSelect={onSelectCategory}
+                selected={selectedCategory}
+              />
+            </div>
+            <div className={styles["home-page__catalogs-row"]}>
+              <Title>{t("Бренды")}</Title>
+              <Catalog
+                data={brandData}
+                isLoading={brandIsLoading}
+                onSelect={onSelectBrand}
+                selected={selectedBrand}
+              />
+            </div>
+            <div className={styles["home-page__catalogs-row"]}>
+              <Title>{t("Цена")}</Title>
+              <RangeSlider
+                min={0}
+                max={100000}
+                minVal={priceFrom}
+                maxVal={priceTo}
+                onChangePriceFrom={onChangePriceFrom}
+                onChangePriceTo={onChangePriceTo}
+              />
+            </div>
           </div>
         </div>
       </Container>

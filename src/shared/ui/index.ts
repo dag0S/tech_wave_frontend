@@ -10,3 +10,4 @@ export { Card } from "./card/Card";
 export { Loader } from "./loader/Loader";
 export { LoaderSize } from "./loader/LoaderProps";
 export { Skeleton } from "./skeleton/Skeleton";
+export { Title } from "./title/Title";

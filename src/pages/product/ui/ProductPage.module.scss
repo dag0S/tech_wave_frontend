@@ -1,0 +1,23 @@
+.product-page {
+  padding-top: 20px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 10px;
+  }
+
+  &__images {
+    img {
+      width: 469px;
+      height: 495px;
+      border-radius: 4px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

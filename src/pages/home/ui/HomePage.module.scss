@@ -15,6 +15,12 @@
   &__catalogs {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+  }
+
+  &__catalogs-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

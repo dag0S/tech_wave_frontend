@@ -7,6 +7,7 @@ import { AuthPage } from "@/pages/auth";
 import { CartPage } from "@/pages/cart";
 import { FavoritesPage } from "@/pages/favorites";
 import { NotFoundPage } from "@/pages/notFound";
+import { ProductPage } from "@/pages/product";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: paths.favorites,
         element: <FavoritesPage />,
+      },
+      {
+        path: `${paths.product}/:id`,
+        element: <ProductPage />,
       },
       {
         path: paths.notFound,

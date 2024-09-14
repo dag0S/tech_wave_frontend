@@ -17,4 +17,6 @@ export interface ResponseDeviceData {
 export interface IParams {
   brandId?: number;
   categoryId?: number;
+  priceFrom?: number;
+  priceTo?: number;
 }
