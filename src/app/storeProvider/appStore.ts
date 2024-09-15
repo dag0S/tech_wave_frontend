@@ -11,6 +11,7 @@ import { brandSlice, BrandState } from "@/entities/brand";
 import { deviceSlice, DeviceState } from "@/entities/device";
 import { cartSlice, CartState } from "@/entities/cart";
 import { rangePriceSlice, RangePriceState } from "@/entities/rangePrice";
+import { favoriteListSlice, FavoriteListState } from "@/entities/favoriteList";
 
 export interface StateSchema {
   loginSlice: LoginState;
@@ -21,6 +22,7 @@ export interface StateSchema {
   brandSlice: BrandState;
   cartSlice: CartState;
   rangePrice: RangePriceState;
+  favoriteList: FavoriteListState;
   [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
@@ -34,6 +36,7 @@ export function createReduxStore(initialState?: StateSchema) {
     deviceSlice: deviceSlice.reducer,
     cartSlice: cartSlice.reducer,
     rangePrice: rangePriceSlice.reducer,
+    favoriteList: favoriteListSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
   };
 

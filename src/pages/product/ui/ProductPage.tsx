@@ -1,13 +1,48 @@
 import { FC } from "react";
+import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useGetDeviceByIdQuery } from "@/entities/device";
+import { useGetAllCategoriesQuery } from "@/entities/category";
+import { Button, Card, Container, Skeleton } from "@/shared/ui";
+import { useGetAllBrandsQuery } from "@/entities/brand";
 
 import styles from "./ProductPage.module.scss";
-import { useParams } from "react-router-dom";
-import { useGetDeviceByIdQuery } from "@/entities/device";
-import { Card, Container } from "@/shared/ui";
 
 const ProductPage: FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
-  const { data } = useGetDeviceByIdQuery(id || "");
+  const { data: device, isLoading: isLoadingDevice } = useGetDeviceByIdQuery(
+    id || ""
+  );
+  const { data: categories, isLoading: isLoadingCategories } =
+    useGetAllCategoriesQuery();
+  const category = categories?.find((item) => item.id === device?.categoryId);
+  const { data: brands, isLoading: isLoadingBrands } = useGetAllBrandsQuery();
+  const brand = brands?.find((item) => item.id === device?.brandId);
+
+  if (isLoadingDevice) {
+    return (
+      <div className={styles["product-page"]}>
+        <Container>
+          <div className={styles["product-page__grid"]}>
+            <Skeleton width={469} height={495} />
+            <div className={styles["info"]}>
+              <Card className={styles["info__wrap"]}>
+                <Skeleton width="100%" height={32} />
+                <Skeleton width="40%" height={16} />
+                <Skeleton width="30%" height={24} />
+                <Skeleton width="40%" height={16} />
+                <Skeleton width="50%" height={30} />
+              </Card>
+              <Card>
+                <Skeleton width="100%" height={60} />
+              </Card>
+            </div>
+          </div>
+        </Container>
+      </div>
+    );
+  }
 
   return (
     <div className={styles["product-page"]}>
@@ -16,30 +51,32 @@ const ProductPage: FC = () => {
           <div className={styles["product-page__images"]}>
             <img
               src="https://c.dns-shop.ru/thumb/st1/fit/0/0/b01f455e0db36429001e817cc9a08484/2258685cc32bbd96de406852bd9b2d94916029658cd6fa120a9f97a4bc0af297.jpg.webp"
-              alt={data?.name}
+              alt={device?.name}
             />
           </div>
-          <div className={styles["product-page__info"]}>
-            <Card>
-              <h2 className={styles["product-page__title"]}>{data?.name}</h2>
-              <div className={styles["product-page__categories"]}>
-                <div className={styles["product-page__categories-item"]}>
-                  Apple
+          <div className={styles["info"]}>
+            <Card className={styles["info__wrap"]}>
+              <h2 className={styles["info__title"]}>{device?.name}</h2>
+              <div className={styles["info__row"]}>
+                <div className={styles["info__item"]}>
+                  {isLoadingBrands ? "..." : brand?.name}
                 </div>
-                <div className={styles["product-page__categories-item"]}>
-                  Смартфоны
+                <div className={styles["info__item"]}>
+                  {isLoadingCategories ? "..." : category?.name}
                 </div>
               </div>
-              <div className={styles["product-page__price"]}>
-                {data?.price} ₽
-              </div>
-              <div>
+              <div className={styles["info__price"]}>{device?.price} ₽</div>
+              <div className={styles["info__row"]}>
                 <div>оценка</div>
                 <div>просмотры</div>
               </div>
+              <Button className={styles["info__btn-add-to-cart"]}>
+                <img src="/public/svg/cart.svg" alt="cart" />
+                {t("В корзину")}
+              </Button>
             </Card>
             <Card>
-              <h2>{data?.description}</h2>
+              <h2>{device?.description}</h2>
             </Card>
           </div>
         </div>

@@ -14,10 +14,38 @@
       border-radius: 4px;
     }
   }
+}
 
-  &__info {
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__wrap {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: start;
+    padding-right: 40px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  &__btn-add-to-cart {
+    width: 268px;
   }
 }

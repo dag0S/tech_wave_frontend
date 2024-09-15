@@ -1,6 +1,7 @@
-import { FC, memo, useCallback, useMemo, useState } from "react";
+import { FC, memo, useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import cn from "classnames";
 import { paths } from "@/shared/lib/react-router";
 import { Loader, Modal, LoaderSize } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
@@ -22,6 +23,18 @@ const Navigation: FC = memo(() => {
     () => items.reduce((amount, item) => item.amount + amount, 0),
     [items]
   );
+  const [isFavoriteAnimated, setIsFavoriteAnimated] = useState(false);
+  const favoriteList = useAppSelector((state) => state.favoriteList.items);
+
+  useEffect(() => {
+    setIsFavoriteAnimated(true);
+    const timer = setTimeout(() => {
+      setIsFavoriteAnimated(false);
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [favoriteList]);
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
@@ -55,7 +68,13 @@ const Navigation: FC = memo(() => {
       </li>
       <li>
         <Link to={paths.favorites} className={styles["navigation__item"]}>
-          <img src="/svg/favorite.svg" alt="favorite" />
+          <img
+            className={cn({
+              [styles["bump"]]: isFavoriteAnimated,
+            })}
+            src="/svg/favorite.svg"
+            alt="favorite"
+          />
           {t("Избранное")}
         </Link>
       </li>

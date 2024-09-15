@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CartItem } from "./types";
 import { calcTotalPrice } from "../lib/calcTotalPrice";
-import { saveCartInLS } from "../lib/saveCartInLS";
-import { getCartFromLS } from "../lib/getCartFromLS";
+import { getFromLS, saveInLS } from "@/shared/utils";
 
 export interface CartState {
   items: CartItem[];
   totalPrice: number;
 }
 
-const { items, totalPrice } = getCartFromLS();
+const items = getFromLS<CartItem[]>("cart");
+const totalPrice = calcTotalPrice(items);
 
 const initialState: CartState = {
   items,
@@ -35,7 +35,7 @@ export const cartSlice = createSlice({
       }
 
       state.totalPrice = calcTotalPrice(state.items);
-      saveCartInLS(state.items);
+      saveInLS<CartItem[]>(state.items, "cart");
     },
     minusItem: (state, action: PayloadAction<number>) => {
       const findItem = state.items.find((item) => item.id === action.payload);
@@ -50,17 +50,17 @@ export const cartSlice = createSlice({
       }
 
       state.totalPrice = calcTotalPrice(state.items);
-      saveCartInLS(state.items);
+      saveInLS<CartItem[]>(state.items, "cart");
     },
     removeItem: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
       state.totalPrice = calcTotalPrice(state.items);
-      saveCartInLS(state.items);
+      saveInLS<CartItem[]>(state.items, "cart");
     },
     clearCart: (state) => {
       state.items = [];
       state.totalPrice = 0;
-      saveCartInLS(state.items);
+      saveInLS<CartItem[]>(state.items, "cart");
     },
   },
 });
