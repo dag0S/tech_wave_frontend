@@ -11,7 +11,7 @@ import { paths } from "@/shared/lib/react-router";
 import styles from "./DeviceInCart.module.scss";
 
 export const DeviceInCart: FC<DeviceInCartProps> = memo(
-  ({ className, data }) => {
+  ({ className, data, AddToFavoriteList }) => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation("cart");
 
@@ -60,6 +60,7 @@ export const DeviceInCart: FC<DeviceInCartProps> = memo(
           </div>
         </div>
         <div className={styles["device__icons"]}>
+          {AddToFavoriteList}
           <button
             className={styles["device__trash"]}
             onClick={handlerRemoveItem}

@@ -1,13 +1,16 @@
 .add-to-favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary {
   background: var(--device-card-color);
   border-radius: 4px;
   width: 40px;
   height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
 
-  position: absolute;
-  top: 12px;
-  right: 12px;
+.clear {
+  display: block;
 }

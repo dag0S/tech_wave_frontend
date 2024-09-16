@@ -1,4 +1,5 @@
 import { FC, memo, useCallback } from "react";
+import cn from "classnames";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { paths } from "@/shared/lib/react-router";
@@ -6,11 +7,12 @@ import { Button } from "@/shared/ui";
 import { DeviceProps } from "./DeviceProps";
 import { addItem, CartItem } from "@/entities/cart";
 import { useAppDispatch } from "@/shared/model";
+import { addNotification } from "@/shared/lib/notification";
 
 import styles from "./Device.module.scss";
 
 export const Device: FC<DeviceProps> = memo(
-  ({ device, imageUrl, AddToFavoriteList }) => {
+  ({ className, device, imageUrl, AddToFavoriteList }) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -20,11 +22,17 @@ export const Device: FC<DeviceProps> = memo(
         amount: 0,
       };
 
+      addNotification({
+        title: "Отлично!",
+        message: `Товар ${device.name} добавлен в корзину`,
+        type: "success",
+      });
+
       dispatch(addItem(cartItem));
     }, [dispatch, device]);
 
     return (
-      <div className={styles["device"]}>
+      <div className={cn(styles["device"], className)}>
         <Link to={`${paths.product}/${device.id}`}>
           <img
             className={styles["device__image"]}

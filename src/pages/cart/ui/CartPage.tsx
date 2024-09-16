@@ -5,6 +5,10 @@ import { clearCart, DeviceInCart } from "@/entities/cart";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 
 import styles from "./CartPage.module.scss";
+import {
+  AddToFavoriteList,
+  AddToFavoriteListTheme,
+} from "@/features/addToFavoriteList";
 
 const CartPage: FC = memo(() => {
   const { t } = useTranslation("cart");
@@ -35,7 +39,16 @@ const CartPage: FC = memo(() => {
             <div className={styles["cart__devices"]}>
               {devicesInCart.length > 0 ? (
                 devicesInCart.map((device) => (
-                  <DeviceInCart data={device} key={device.id} />
+                  <DeviceInCart
+                    AddToFavoriteList={
+                      <AddToFavoriteList
+                        device={device}
+                        theme={AddToFavoriteListTheme.CLEAR}
+                      />
+                    }
+                    data={device}
+                    key={device.id}
+                  />
                 ))
               ) : (
                 <h3>{t("В корзине пусто")}</h3>
@@ -43,7 +56,9 @@ const CartPage: FC = memo(() => {
             </div>
           </Card>
           <Card className={styles["cart__right-wrap"]}>
-            <h3 className={styles["cart__right-title"]}>{t("Краткие сведения")}</h3>
+            <h3 className={styles["cart__right-title"]}>
+              {t("Краткие сведения")}
+            </h3>
             <div className={styles["cart__info"]}>
               <div className={styles["cart__info-row"]}>
                 <div className={styles["cart__info-title"]}>
@@ -52,8 +67,12 @@ const CartPage: FC = memo(() => {
                 <div className={styles["cart__info-value"]}>{totalPrice} ₽</div>
               </div>
               <div className={styles["cart__info-row"]}>
-                <div className={styles["cart__info-title"]}>{t("Доставка")}</div>
-                <div className={styles["cart__info-value"]}>{t("бесплатно")}</div>
+                <div className={styles["cart__info-title"]}>
+                  {t("Доставка")}
+                </div>
+                <div className={styles["cart__info-value"]}>
+                  {t("бесплатно")}
+                </div>
               </div>
               <div className={styles["cart__info-row"]}>
                 <div className={styles["cart__info-title"]}>{t("Налоги")}</div>

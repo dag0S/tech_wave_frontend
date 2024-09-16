@@ -1,0 +1,28 @@
+.favorites-page {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__device-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(277px, 1fr));
+    gap: 8px;
+  }
+
+  &__device {
+    align-content: center;
+  }
+
+  &__add-to-favorite-list {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+}

@@ -1,13 +1,16 @@
 import { FC, memo, useCallback } from "react";
 import cn from "classnames";
-import { AddToFavoriteListProps } from "./AddToFavoriteListProps";
+import {
+  AddToFavoriteListProps,
+  AddToFavoriteListTheme,
+} from "./AddToFavoriteListProps";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { toggleFavoriteDevice } from "@/entities/favoriteList";
 
 import styles from "./AddToFavoriteList.module.scss";
 
 export const AddToFavoriteList: FC<AddToFavoriteListProps> = memo(
-  ({ device, className }) => {
+  ({ className, device, theme = AddToFavoriteListTheme.PRIMARY }) => {
     const dispatch = useAppDispatch();
     const favoriteList = useAppSelector((state) => state.favoriteList.items);
     const isFavorite = favoriteList.find((item) => item.id === device.id);
@@ -18,7 +21,7 @@ export const AddToFavoriteList: FC<AddToFavoriteListProps> = memo(
 
     return (
       <button
-        className={cn(styles["add-to-favorite"], className)}
+        className={cn(styles["add-to-favorite"], className, styles[theme])}
         onClick={handlerToggleFavoriteDevice}
       >
         <img
