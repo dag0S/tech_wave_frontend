@@ -8,12 +8,12 @@ interface Item {
   icon?: string;
 }
 
-interface LinkItem extends Item {
+export interface LinkItem extends Item {
   type: DropDownItemType.LINK;
   link: string;
 }
 
-interface ButtonItem extends Item {
+export interface ButtonItem extends Item {
   type: DropDownItemType.BUTTON;
   onClick?: () => void;
 }
