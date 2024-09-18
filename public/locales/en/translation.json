@@ -15,5 +15,10 @@
   "Сбросить фильтры": "Reset filters",
   "Категории": "Categories",
   "Бренды": "Brands",
-  "Цена": "Price"
+  "Цена": "Price",
+  "Внимание": "Attention",
+  "При первом заходе данные с сервера могут медлено грузиться, т.к. сервер бесплатный. Чтобы исправить это, перезапустите сайт :)": "When you first log in, data from the server may load slowly, because the server is free. To fix this, restart the site :)",
+  "Отлично!": "Great!",
+  "Товар": "Product",
+  "добавлен в корзину": "added to cart"
 }

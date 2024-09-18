@@ -1,19 +1,36 @@
-import { FC, memo, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  FC,
+  memo,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import { paths } from "@/shared/lib/react-router";
-import { Loader, Modal, LoaderSize } from "@/shared/ui";
+import {
+  Loader,
+  Modal,
+  LoaderSize,
+  Avatar,
+  DropDownMenu,
+  DropDownItemType,
+} from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { logout } from "@/entities/user/model/slice";
 import { ChangeTheme } from "@/features/changeTheme";
 import { ChangeLang } from "@/features/changeLang";
 import { useCurrentQuery } from "@/entities/user";
+import { useClickOutside } from "@/shared/lib/hooks";
 
 import styles from "./Navigation.module.scss";
 
 const Navigation: FC = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const { isAuthenticated } = useAppSelector((state) => state.userSlice);
   const dispatch = useAppDispatch();
   const { isLoading } = useCurrentQuery();
@@ -25,6 +42,7 @@ const Navigation: FC = memo(() => {
   );
   const [isFavoriteAnimated, setIsFavoriteAnimated] = useState(false);
   const favoriteList = useAppSelector((state) => state.favoriteList.items);
+  const dropDownRef = useClickOutside(() => setIsOpenDropDown(false));
 
   useEffect(() => {
     setIsFavoriteAnimated(true);
@@ -45,9 +63,15 @@ const Navigation: FC = memo(() => {
   }, []);
 
   const handlerLogout = useCallback(() => {
+    setIsOpenDropDown(false);
     dispatch(logout());
     localStorage.removeItem(import.meta.env.VITE_TOKEN);
   }, [dispatch]);
+
+  const handlerToggleDropDownMenu = useCallback((e: MouseEvent) => {
+    e.stopPropagation();
+    setIsOpenDropDown((prev) => !prev);
+  }, []);
 
   return (
     <ul className={styles["navigation"]}>
@@ -97,9 +121,9 @@ const Navigation: FC = memo(() => {
         ) : isAuthenticated ? (
           <button
             className={styles["navigation__item"]}
-            onClick={handlerLogout}
+            onClick={handlerToggleDropDownMenu}
           >
-            <img src="/svg/logout.svg" alt="logout" />
+            <Avatar src="/img/default-user-avatar.png" alt="user" size={24} />
             {t("Выйти")}
           </button>
         ) : (
@@ -109,6 +133,26 @@ const Navigation: FC = memo(() => {
           </Link>
         )}
       </li>
+      {isOpenDropDown && (
+        <DropDownMenu
+          className={styles["navigation__dropdown-mene"]}
+          ref={dropDownRef}
+          list={[
+            {
+              type: DropDownItemType.LINK,
+              link: "/",
+              name: "Профиль",
+              icon: "svg/user.svg",
+            },
+            {
+              type: DropDownItemType.BUTTON,
+              name: "Выйти",
+              icon: "svg/logout.svg",
+              onClick: handlerLogout,
+            },
+          ]}
+        />
+      )}
     </ul>
   );
 });

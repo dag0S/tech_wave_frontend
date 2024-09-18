@@ -23,8 +23,8 @@ export const Device: FC<DeviceProps> = memo(
       };
 
       addNotification({
-        title: "Отлично!",
-        message: `Товар ${device.name} добавлен в корзину`,
+        title: t("Отлично!"),
+        message: `${t("Товар")} ${device.name} ${t("добавлен в корзину")}`,
         type: "success",
       });
 

@@ -1,15 +1,19 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useGetDeviceByIdQuery } from "@/entities/device";
 import { useGetAllCategoriesQuery } from "@/entities/category";
 import { Button, Card, Container, Skeleton } from "@/shared/ui";
 import { useGetAllBrandsQuery } from "@/entities/brand";
+import { useAppDispatch } from "@/shared/model";
+import { addItem, CartItem } from "@/entities/cart";
+import { addNotification } from "@/shared/lib/notification";
 
 import styles from "./ProductPage.module.scss";
 
 const ProductPage: FC = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
   const { data: device, isLoading: isLoadingDevice } = useGetDeviceByIdQuery(
     id || ""
@@ -19,6 +23,25 @@ const ProductPage: FC = () => {
   const category = categories?.find((item) => item.id === device?.categoryId);
   const { data: brands, isLoading: isLoadingBrands } = useGetAllBrandsQuery();
   const brand = brands?.find((item) => item.id === device?.brandId);
+
+  const handlerAddToCart = useCallback(() => {
+    if (!device) {
+      return;
+    }
+
+    const cartItem: CartItem = {
+      ...device,
+      amount: 0,
+    };
+
+    addNotification({
+      title: t("Отлично!"),
+      message: `${t("Товар")} ${device.name} ${t("добавлен в корзину")}`,
+      type: "success",
+    });
+
+    dispatch(addItem(cartItem));
+  }, [dispatch, device]);
 
   if (isLoadingDevice) {
     return (
@@ -70,7 +93,10 @@ const ProductPage: FC = () => {
                 <div>оценка</div>
                 <div>просмотры</div>
               </div>
-              <Button className={styles["info__btn-add-to-cart"]}>
+              <Button
+                className={styles["info__btn-add-to-cart"]}
+                onClick={handlerAddToCart}
+              >
                 <img src="/public/svg/cart.svg" alt="cart" />
                 {t("В корзину")}
               </Button>

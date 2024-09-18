@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 
   &__item {
     display: flex;
@@ -36,6 +37,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__dropdown-mene {
+    position: absolute;
+    top: 76px;
+    right: 0px;
+    z-index: 5;
   }
 }
 

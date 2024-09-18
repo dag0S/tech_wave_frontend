@@ -11,3 +11,6 @@ export { Loader } from "./loader/Loader";
 export { LoaderSize } from "./loader/LoaderProps";
 export { Skeleton } from "./skeleton/Skeleton";
 export { Title } from "./title/Title";
+export { Avatar } from "./avatar/Avatar";
+export { DropDownMenu } from "./dropDownMenu/DropDownMenu";
+export { DropDownItemType } from "./dropDownMenu/DropDownMenuProps";
