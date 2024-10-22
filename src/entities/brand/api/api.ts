@@ -5,13 +5,13 @@ export const brandApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllBrands: builder.query<ResponseBrandData[], void>({
       query: () => ({
-        url: "/brand",
+        url: "/brands",
         method: "GET",
       }),
     }),
     createBrand: builder.mutation<ResponseBrandData, BrandData>({
       query: (brandData) => ({
-        url: "/brand/create",
+        url: "/brands",
         method: "POST",
         body: brandData,
       }),

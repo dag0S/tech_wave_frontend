@@ -12,6 +12,8 @@
     width: 100%;
     border-radius: 4px;
     margin-bottom: 5px;
+    height: 280px;
+    object-fit: cover;
   }
 
   &__title {
@@ -36,5 +38,3 @@
     width: 100%;
   }
 }
-
-

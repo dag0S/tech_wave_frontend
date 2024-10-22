@@ -5,6 +5,7 @@ export interface DeviceData {
   viewsCount: number;
   categoryId: number;
   brandId: number;
+  images: string[];
 }
 
 export type IDevice = DeviceData & { id: number };

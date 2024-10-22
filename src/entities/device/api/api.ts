@@ -1,38 +1,33 @@
 import { baseApi } from "@/shared/api";
-import {
-  DeviceData,
-  IDevice,
-  IParams,
-  ResponseDeviceData,
-} from "../model/types";
+import { DeviceData, IDevice, IParams } from "../model/types";
 
 export const deviceApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllDevices: builder.query<ResponseDeviceData, IParams>({
+    getAllDevices: builder.query<IDevice[], IParams>({
       query: (params) => {
         const { brandId, categoryId, priceFrom, priceTo } = params;
         const queryParams: string[] = [];
 
         if (brandId) queryParams.push(`brandId=${brandId}`);
         if (categoryId) queryParams.push(`categoryId=${categoryId}`);
-        if (priceFrom) queryParams.push(`priceFrom=${priceFrom}`);
-        if (priceTo) queryParams.push(`priceTo=${priceTo}`);
+        if (priceFrom) queryParams.push(`price_gte=${priceFrom}`);
+        if (priceTo) queryParams.push(`price_lte=${priceTo}`);
 
         return {
-          url: `/device?${queryParams.join("&")}`,
+          url: `/devices?${queryParams.join("&")}`,
           method: "GET",
         };
       },
     }),
     getDeviceById: builder.query<IDevice, string>({
       query: (deviceId) => ({
-        url: `/device/${deviceId}`,
+        url: `/devices/${deviceId}`,
         method: "GET",
       }),
     }),
     createDevice: builder.mutation<IDevice, DeviceData>({
       query: (deviceData) => ({
-        url: "/device/create",
+        url: "/devices",
         method: "POST",
         body: deviceData,
       }),

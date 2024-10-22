@@ -8,7 +8,9 @@
     "url": "https://github.com/dag0S"
   },
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
+    "start:server": "node ./server/index.js",
+    "start:dev": "concurrently \"npm run start\" \"npm run start:server\"",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -46,10 +48,12 @@
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "concurrently": "^9.0.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
+    "json-server": "^0.17.4",
     "sass": "^1.77.6",
     "storybook": "^8.2.9",
     "typescript": "^5.2.2",

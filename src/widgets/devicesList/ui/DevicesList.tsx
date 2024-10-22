@@ -10,7 +10,7 @@ import styles from "./DevicesList.module.scss";
 export const DevicesList: FC<DevicesListProps> = memo(
   ({ className, params }) => {
     const { data, isLoading } = useGetAllDevicesQuery(params);
-    const isDevices = data?.devices && data.devices.length > 0;
+    const isDevices = Array.isArray(data) && data.length > 0;
 
     if (isLoading) {
       return (
@@ -25,11 +25,11 @@ export const DevicesList: FC<DevicesListProps> = memo(
     return (
       <div className={cn(styles["devices-list"], className)}>
         {isDevices &&
-          data.devices.map((device) => (
+          data.map((device) => (
             <Device
               key={device.id}
               device={device}
-              imageUrl="https://c.dns-shop.ru/thumb/st1/fit/0/0/b01f455e0db36429001e817cc9a08484/2258685cc32bbd96de406852bd9b2d94916029658cd6fa120a9f97a4bc0af297.jpg.webp"
+              imageUrl={device.images[0]}
               AddToFavoriteList={
                 <AddToFavoriteList
                   className={styles["devices-list__add-to-favorite-list"]}

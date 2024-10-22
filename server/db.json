@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Danila",
+      "email": "danila@mail.ru",
+      "password": "123",
+      "role": "ADMIN",
+      "avatar": "https://sun1-97.userapi.com/s/v1/ig2/AgUTsp-p5i3FfYBkbaC3gVLe1WDCM_s2ahleSecRsiNjS2zFVJcPS9eEmS21UA8_PCRiwqqWo0HpRtXD9sEIppWk.jpg?quality=95&crop=0,49,1077,1077&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&ava=1&cs=200x200"
+    },
+    {
+      "id": 2,
+      "name": "Nikita",
+      "email": "nikita@mail.ru",
+      "password": "123",
+      "role": "USER",
+      "avatar": "https://steamuserimages-a.akamaihd.net/ugc/872992670373300596/EB2C6465700D080FE6FF25A56DA144813FF9E079/?imw=512&amp;imh=509&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true"
+    },
+    {
+      "id": 3,
+      "email": "alena@mail.ru",
+      "password": "123",
+      "name": "Алена"
+    }
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "name": "Xiaomi Redmi Note 12",
+      "description": "Смартфон Xiaomi Redmi Note 12 с объемом встроенной памяти 128 ГБ оборудован оптикой с 3 модулями и множеством опций. Они улучшат яркость в условиях кромешной темноты, повысят резкость участка кадра, распознают тексты и QR-коды. Незаметные глазу рамки усиливают впечатления от игры или просмотра фильма. Частота обновления 120 Гц гарантирует, что вы не столкнетесь с задержками при трансляции динамичных эпизодов.",
+      "price": 12999,
+      "rating": 4.5,
+      "views": 3561,
+      "categoryId": 1,
+      "brandId": 2,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/e978d20fdce0850bbe0fc19b62c2f230/9a7307f0e4f1d26281e24e0661c44ab004844c8b5ea1eabda37103f148af971d.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/e50ee031765f5d00c36423b3e89daca6/23ef4ab9b29f8b326a4505dbbf68bf85fbad7cdd04cb9455c1365466d1dac660.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/2f967f91f6b6549525bd8a69cab18bc7/2b8086b896919ac5e1be51f62a08a0c3d2f846c733252d1d9b82c1dd3e02cd43.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Разрешение экрана",
+          "description": "2400x1080"
+        },
+        {
+          "title": "Версия ОС",
+          "description": "Android 13"
+        },
+        {
+          "title": "Объем оперативной памяти",
+          "description": "4 ГБ"
+        },
+        {
+          "title": "Объем встроенной памяти",
+          "description": "128 ГБ"
+        },
+        {
+          "title": "Количество мегапикселей",
+          "description": "50+8+2 Мп"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Apple iPhone 11",
+      "description": "На передней панели смартфона Apple iPhone 11 присутствует впечатляющий ЖК‑дисплей Liquid Retina с диагональю 6.1 дюйма. Защита от воды при погружении на глубину до 2 метров до 30 минут.\nСмартфон Apple iPhone 11 стал обладателем системы из двух камер: сверхширокоугольной (13 мм) и широкоугольной (26 мм). Угол обзора 120° - область изображения в четыре раза больше. Поддержка Focus Pixels на всей матрице.",
+      "price": 44999,
+      "rating": 4,
+      "views": 9088,
+      "categoryId": 1,
+      "brandId": 1,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/9951aa6a99611e4df95c83529680ba0f/c73bba26affbf44a01db51117e576f246bfd88a6402b11546368887a7f8ad707.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/8b61fe7a3ec04643b8b1d9f27578f651/bfd2062ddf87ed9b59cb9a1efd78c86435bb82c8f0a3db3b40b56a500a5bc596.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/0d95277326a62011b4076e2a42d8eb0b/e0debca5125461d750890b54db6706d7ba8bc2b2bf0e71f706c238a3045b2a5e.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Разрешение экрана",
+          "description": "1792x828"
+        },
+        {
+          "title": "Версия ОС",
+          "description": "iOS 13"
+        },
+        {
+          "title": "Объем оперативной памяти",
+          "description": "4 ГБ"
+        },
+        {
+          "title": "Объем встроенной памяти",
+          "description": "128 ГБ"
+        },
+        {
+          "title": "Количество мегапикселей",
+          "description": "12+12 Мп"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Смартфоны"
+    },
+    {
+      "id": 2,
+      "name": "Ноутбуки"
+    },
+    {
+      "id": 3,
+      "name": "Смарт-часы"
+    },
+    {
+      "id": 4,
+      "name": "Наушники"
+    },
+    {
+      "id": 5,
+      "name": "Клавиатуры"
+    }
+  ],
+  "brands": [
+    {
+      "id": 1,
+      "name": "Apple"
+    },
+    {
+      "id": 2,
+      "name": "Xiaomi"
+    },
+    {
+      "id": 3,
+      "name": "Honor"
+    },
+    {
+      "id": 4,
+      "name": "Tecno"
+    },
+    {
+      "id": 5,
+      "name": "Logitech"
+    }
+  ]
+}

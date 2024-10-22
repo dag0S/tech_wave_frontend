@@ -72,10 +72,7 @@ const ProductPage: FC = () => {
       <Container>
         <div className={styles["product-page__grid"]}>
           <div className={styles["product-page__images"]}>
-            <img
-              src="https://c.dns-shop.ru/thumb/st1/fit/0/0/b01f455e0db36429001e817cc9a08484/2258685cc32bbd96de406852bd9b2d94916029658cd6fa120a9f97a4bc0af297.jpg.webp"
-              alt={device?.name}
-            />
+            <img src={device?.images[0]} alt={device?.name} />
           </div>
           <div className={styles["info"]}>
             <Card className={styles["info__wrap"]}>

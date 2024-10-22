@@ -9,14 +9,14 @@ export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<ResponseUserData, UserLoginData>({
       query: (userData) => ({
-        url: "/user/login",
+        url: "/login",
         method: "POST",
         body: userData,
       }),
     }),
     register: builder.mutation<ResponseUserData, UserRegistrationData>({
       query: (userData) => ({
-        url: "/user/register",
+        url: "/register",
         method: "POST",
         body: userData,
       }),
