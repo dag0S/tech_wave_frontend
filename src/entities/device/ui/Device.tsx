@@ -29,7 +29,7 @@ export const Device: FC<DeviceProps> = memo(
       });
 
       dispatch(addItem(cartItem));
-    }, [dispatch, device]);
+    }, [dispatch, device, t]);
 
     return (
       <div className={cn(styles["device"], className)}>
