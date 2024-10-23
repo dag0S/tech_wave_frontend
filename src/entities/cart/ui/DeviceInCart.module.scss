@@ -8,6 +8,11 @@
   gap: 10px;
   position: relative;
 
+  @media (max-width: 576px) {
+    flex-direction: column;
+    height: 100%;
+  }
+
   &__left-wrap {
     display: inline-block;
 
@@ -17,6 +22,11 @@
       background: #fff;
       object-fit: contain;
       height: 100%;
+
+      @media (max-width: 576px) {
+        height: 230px;
+        width: 100%;
+      }
     }
   }
 
@@ -45,6 +55,10 @@
   &__total-price {
     font-weight: 700;
     font-size: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   &__btn-change-count {
@@ -77,6 +91,12 @@
     position: absolute;
     top: 5px;
     right: 5px;
+
+    @media (max-width: 576px) {
+      bottom: 10px;
+      right: 10px;
+      top: auto;
+    }
   }
 
   &__trash {

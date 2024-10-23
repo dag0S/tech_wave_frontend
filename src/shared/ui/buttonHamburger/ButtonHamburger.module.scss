@@ -1,0 +1,39 @@
+.btn {
+  height: 24px;
+  width: 24px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  span {
+    background: var(--main-text-color);
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &--active {
+    span {
+      &:nth-child(1) {
+        transform-origin: 0% 0%;
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        transform: scaleY(0);
+      }
+
+      &:nth-child(3) {
+        transform-origin: 0% 100%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

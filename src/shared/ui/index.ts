@@ -14,3 +14,4 @@ export { Title } from "./title/Title";
 export { Avatar } from "./avatar/Avatar";
 export { DropDownMenu } from "./dropDownMenu/DropDownMenu";
 export { DropDownItemType } from "./dropDownMenu/DropDownMenuProps";
+export { ButtonHamburger } from "./buttonHamburger/ButtonHamburger";

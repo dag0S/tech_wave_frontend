@@ -62,7 +62,7 @@ export const DeviceInCart: FC<DeviceInCartProps> = memo(
             className={styles["device__trash"]}
             onClick={handlerRemoveItem}
           >
-            <img src="/public/svg/trash.svg" alt="trash" />
+            <img src="/svg/trash.svg" alt="trash" />
           </button>
         </div>
       </div>

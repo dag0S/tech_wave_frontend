@@ -44,7 +44,10 @@ export const Device: FC<DeviceProps> = memo(
           <h6 className={styles["device__title"]}>{device.name}</h6>
         </Link>
         <div className={styles["device__price"]}>
-          <span>{device.price} ₽</span>
+          <div>{device.price} ₽</div>
+          <div className={styles["device__rating"]}>
+            <img src="/svg/star.svg" alt="rating" /> {device.rating}
+          </div>
         </div>
         <Button className={styles["device__btn"]} onClick={handlerAddToCart}>
           <img src="/svg/cart.svg" alt="cart" />

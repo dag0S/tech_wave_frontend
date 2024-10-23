@@ -8,7 +8,7 @@
     "url": "https://github.com/dag0S"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "start:server": "node ./server/index.js",
     "start:dev": "concurrently \"npm run start\" \"npm run start:server\"",
     "build": "tsc -b && vite build",

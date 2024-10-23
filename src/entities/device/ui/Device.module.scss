@@ -1,5 +1,5 @@
 .device {
-  max-width: 278px;
+  width: 278px;
   min-height: 373px;
   border-radius: 4px;
   padding: 5px;
@@ -8,6 +8,21 @@
   background: var(--device-card-color);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 
+  @media (max-width: 992px) {
+    width: 240px;
+    min-height: 350px;
+  }
+
+  @media (max-width: 768px) {
+    width: 265px;
+    min-height: 350px;
+  }
+
+  @media (max-width: 576px) {
+    width: 90vw;
+    min-height: 180px;
+  }
+
   &__image {
     width: 100%;
     border-radius: 4px;
@@ -15,6 +30,18 @@
     height: 280px;
     object-fit: contain;
     background: #fff;
+
+    @media (max-width: 992px) {
+      height: 250px;
+    }
+
+    @media (max-width: 768px) {
+      height: 280px;
+    }
+
+    @media (max-width: 576px) {
+      height: 200px;
+    }
   }
 
   &__title {
@@ -23,8 +50,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     margin-bottom: 6px;
+
+    @media (max-width: 992px) {
+      font-size: 18px;
+    }
   }
 
   &__price {
@@ -33,6 +63,29 @@
     color: var(--link-color);
 
     margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 992px) {
+      font-size: 16px;
+      gap: 8px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--main-text-color);
+    font-weight: 500;
+    font-size: 16px;
+
+    @media (max-width: 992px) {
+      font-size: 14px;
+      gap: 5px;
+    }
   }
 
   &__btn {

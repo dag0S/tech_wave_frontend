@@ -2,9 +2,10 @@ export interface DeviceData {
   name: string;
   description: string;
   price: number;
-  viewsCount: number;
+  views: number;
   categoryId: number;
   brandId: number;
+  rating: number;
   images: string[];
 }
 

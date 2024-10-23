@@ -11,13 +11,13 @@
   }
 
   &__device-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(277px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
-  }
 
-  &__device {
-    align-content: center;
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
   }
 
   &__add-to-favorite-list {

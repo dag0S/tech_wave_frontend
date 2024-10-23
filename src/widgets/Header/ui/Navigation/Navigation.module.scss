@@ -4,6 +4,20 @@
   gap: 10px;
   position: relative;
 
+  @media (max-width: 768px) {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 105px;
+    right: 10px;
+    z-index: 20;
+
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.35);
+    background: var(--header-color);
+  }
+
   &__item {
     display: flex;
     flex-direction: column;
@@ -20,6 +34,10 @@
 
     &:hover {
       background: rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 992px) {
+      font-size: 14px;
     }
   }
 
@@ -43,7 +61,13 @@
     position: absolute;
     top: 76px;
     right: 0px;
-    z-index: 5;
+    z-index: 20;
+
+    @media (max-width: 768px) {
+      top: auto;
+      bottom: 0px;
+      right: 100px;
+    }
   }
 }
 

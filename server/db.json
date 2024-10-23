@@ -289,6 +289,224 @@
           "description": "Черный"
         }
       ]
+    },
+    {
+      "id": 9,
+      "name": "Logitech G413",
+      "description": "Клавиатура проводная Logitech G413 [920-008312] обладает подсветкой клавиш, которая добавляет удобства при обработке данных в условиях слабого освещения. Переключатели Logitech Romer-G Tactile отличаются быстрым откликом на касания и отсутствием громких звуков во время нажатия. Программируемые кнопки открывают мгновенный доступ к игровым действиям и другому функционалу.",
+      "price": 6799,
+      "rating": 4.8,
+      "views": 672,
+      "categoryId": 5,
+      "brandId": 5,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/cedbf0960477699dd609628263c32c19/a6f8fb0bf231e1a6fa5f2cc772131b8618616a4a9eb3673fa39e298565929041.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/c1f59e238a3a19b90a1603c49c43b1e6/ec95c8c5e10f5461bd0df5ede8cf61276b251f2f35cb5fcd134e1a799fec9705.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/6eb4a2f7ebf814b8751299a25466d326/9092cc0c49490a29d5bbb8b70af38f9ff299d27e5e899edf8fc1cf147e7fe675.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Длина кабеля",
+          "description": "1.8 м"
+        },
+        {
+          "title": "Цифровой блок",
+          "description": "Есть"
+        },
+        {
+          "title": "Основной цвет",
+          "description": "Черный"
+        },
+        {
+          "title": "Общее количество клавиш",
+          "description": "104"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "HONOR Watch 4",
+      "description": "Смарт-часы HONOR Watch 4 в алюминиевом корпусе поддерживают дыхательные упражнения, которые позволяют снять напряжение и сконцентрировать внимание. Встроенные датчики контролируют пульс, содержание кислорода в крови, уровень стресса. Информация отображается на AMOLED-дисплее диагональю 1.75 дюйма. От одного заряда аксессуар работает на протяжении 336 ч.",
+      "price": 14999,
+      "rating": 3.9,
+      "views": 32,
+      "categoryId": 3,
+      "brandId": 3,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/f4151c5e62f11d077c5e6cc9a8a9e8bb/91ff253e4dd8752867585f8d57cb27d4371ace9f5d3126403cc6915cc8978d8a.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/eec18c34f2aa6ec339b0d36ec1484537/0d24d67d5b3c94d2c38a079bc18ded0cb5eba8337506e9f92e6d283fd18e731c.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/97ea0b58f1393eb59402c604c2aea829/c0e3c1ae2a98af9faad1eec06303845bb5375fb0b6c011adb86250457d60b947.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Цвет корпуса",
+          "description": "золотистый"
+        },
+        {
+          "title": "Цвет ремешка",
+          "description": "белый"
+        },
+        {
+          "title": "Материал корпуса",
+          "description": "алюминий"
+        },
+        {
+          "title": "Разрешение",
+          "description": "450x390"
+        },
+        {
+          "title": "Плотность пикселей",
+          "description": "340 ppi"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Xiaomi Redmi Watch 3 Active",
+      "description": "Смарт-часы Xiaomi Redmi Watch 3 Active представлены в серебристом металлическом корпусе с эластичным силиконовым ремешком. Большой дисплей 1.83” с прочным изогнутым стеклом радует яркой и насыщенной картинкой при любом освещении. Возможность смены дизайна циферблата позволяет подбирать тему на ваш вкус.",
+      "price": 3299,
+      "rating": 4.9,
+      "views": 678,
+      "categoryId": 3,
+      "brandId": 2,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/28f574802dfcd1d51db67808669b6b73/8e1e94ff3208a2570ea65978eb7768e6f47239b59ac64529396e89bc969c99dc.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/552dbf190e638a20a8bf4f4970a484c3/45ad80ecc59278de913a73812720ecb954a7526be1d3a723f0d5196f2b3a54e1.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/a9958dcc37c80f04f16622f0feda93c6/40ed213f9c7d6961808306fa9e862b5c9c7d3ae1f93ada19e58702d3b6028159.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Цвет корпуса",
+          "description": "золотистый"
+        },
+        {
+          "title": "Цвет ремешка",
+          "description": "белый"
+        },
+        {
+          "title": "Материал корпуса",
+          "description": "пластик"
+        },
+        {
+          "title": "Разрешение",
+          "description": "280x240"
+        },
+        {
+          "title": "Плотность пикселей",
+          "description": "201 ppi"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Apple Watch Series 8 41mm",
+      "description": "Смарт-часы Apple Watch Series 8 41mm – стильный, функциональный и надежный помощник. Модель отличается датчиком температуры, множеством дизайнов циферблатов на выбор и удобным приложением для тренировок. На квадратном дисплее OLED передается четкая и яркая картинка, а сенсорная отзывчивая панель позволяет легко управлять прикосновениями.",
+      "price": 34699,
+      "rating": 4.7,
+      "views": 1002,
+      "categoryId": 3,
+      "brandId": 1,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/421f2efe6f1ca8c1a35b78a695cd9d0b/2f6c533a00a70e71ca727d1f22167bf51375b1ad9b90cd4c8bdafc28d2f4de49.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/b2b1603c4e91f1f4cb23b1e7bfe0e6bc/f62c5c392512dea32ceb53f9d0bbdc52a698132d1d650f75f66512e5e3658358.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/db4930e0c9c13b9a81db242a56674378/ba3d45510c6a2ebd8f0a9460009be02274678246472d0470f4fa796ec9001dbc.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Цвет корпуса",
+          "description": "черный"
+        },
+        {
+          "title": "Цвет ремешка",
+          "description": "черный"
+        },
+        {
+          "title": "Материал корпуса",
+          "description": "алюминий"
+        },
+        {
+          "title": "Разрешение",
+          "description": "430x352"
+        },
+        {
+          "title": "Плотность пикселей",
+          "description": "326 ppi"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Apple AirPods Pro 2",
+      "description": "Наушники TWS Apple AirPods Pro 2 обладают силиконовыми амбушюрами, которые обеспечивают плотное прилегание к ушному каналу. Спрятанный в пластиковом корпусе микрофон служит для приема вызовов. Защита по стандарту IPX4 исключает риск негативного воздействия брызг.",
+      "price": 26999,
+      "rating": 4.3,
+      "views": 6512,
+      "categoryId": 4,
+      "brandId": 1,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/4def83ad95b41a237a84dd96a847d056/78eb954f5260420ae21d2627aae0fb6ee30ed7082c2777c67dfefc61f461070d.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/e3e37ed3413cbb09aeca01787cf79cce/f3bff68a47153e301acbfde7b4c594145181645d08845191816e2035e0402690.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/2fc867666404e64caf03e0d97462ca69/ab9bbf2792734b6c967dde232bcc0fa303a059b3fff797def342203d5398916a.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Основной цвет наушников",
+          "description": "белый"
+        },
+        {
+          "title": "Материал амбушюр",
+          "description": "силикон"
+        },
+        {
+          "title": "Версия Bluetooth",
+          "description": "5.3"
+        },
+        {
+          "title": "Время работы",
+          "description": "6 ч"
+        },
+        {
+          "title": "Поддержка беспроводной зарядки ",
+          "description": "есть"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Honor Choice Open-Ear",
+      "description": "Наушники TWS Honor Choice Open-Ear предусматривают в своей конструкции клипсу для надежной фиксации на ухе. Устройство обладает степенью пылевлагозащиты IP54, благодаря чему не боится влаги и пота и может использоваться во время активных занятий спортом.",
+      "price": 4999,
+      "rating": 4.1,
+      "views": 4,
+      "categoryId": 4,
+      "brandId": 3,
+      "images": [
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/ca943bf837fd4b1f301d1bd05b6bc29e/f0de3e3dc308ceb9b1eb13667b2e0944e3bb364a6a206f6b53022bb4ef4bf13d.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/589af4b3119f356484b6b4de0547e103/6a02fa080a263d32b31e3cd77be66da8a34cf036ec60742ae98dbeebeed0c0bb.jpg.webp",
+        "https://c.dns-shop.ru/thumb/st1/fit/500/500/210cd8c26fb187f63eb2cdbb9744689b/80739a88f2c7f8f0b90079115fbcc245971d974d67487bd95babf2199316695e.jpg.webp"
+      ],
+      "info": [
+        {
+          "title": "Основной цвет наушников",
+          "description": "черный"
+        },
+        {
+          "title": "Материал амбушюр",
+          "description": "силикон"
+        },
+        {
+          "title": "Версия Bluetooth",
+          "description": "5.3"
+        },
+        {
+          "title": "Время работы",
+          "description": "7 ч"
+        },
+        {
+          "title": "Поддержка беспроводной зарядки ",
+          "description": "нет"
+        }
+      ]
     }
   ],
   "categories": [

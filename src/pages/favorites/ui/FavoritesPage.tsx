@@ -42,7 +42,6 @@ const FavoritesPage: FC = memo(() => {
           {devicesInFavorite.length > 0 ? (
             devicesInFavorite.map((device) => (
               <Device
-                className={styles["favorites-page__device"]}
                 device={device}
                 imageUrl={device.images[0]}
                 AddToFavoriteList={

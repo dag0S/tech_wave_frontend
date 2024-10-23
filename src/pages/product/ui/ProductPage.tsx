@@ -41,7 +41,7 @@ const ProductPage: FC = () => {
     });
 
     dispatch(addItem(cartItem));
-  }, [dispatch, device]);
+  }, [dispatch, device, t]);
 
   if (isLoadingDevice) {
     return (
@@ -87,14 +87,18 @@ const ProductPage: FC = () => {
               </div>
               <div className={styles["info__price"]}>{device?.price} ₽</div>
               <div className={styles["info__row"]}>
-                <div>оценка</div>
-                <div>просмотры</div>
+                <div className={styles["info__row-gap-4"]}>
+                  <img src="/svg/star.svg" alt="star" /> {device?.rating}
+                </div>
+                <div className={styles["info__row-gap-4"]}>
+                  <img src="/svg/view.svg" alt="view" /> {device?.views}
+                </div>
               </div>
               <Button
                 className={styles["info__btn-add-to-cart"]}
                 onClick={handlerAddToCart}
               >
-                <img src="/public/svg/cart.svg" alt="cart" />
+                <img src="/svg/cart.svg" alt="cart" />
                 {t("В корзину")}
               </Button>
             </Card>
