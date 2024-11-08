@@ -11,7 +11,7 @@ import { ItemButton } from "./items/ItemButton";
 import styles from "./DropDownMenu.module.scss";
 
 export const DropDownMenu = forwardRef<HTMLDivElement, DropDownMenuProps>(
-  ({ className, list }, ref) => {
+  ({ className, list, onClick }, ref) => {
     const renderItem = useCallback((item: DropDownItem, i: number) => {
       switch (item.type) {
         case DropDownItemType.BUTTON:
@@ -24,7 +24,11 @@ export const DropDownMenu = forwardRef<HTMLDivElement, DropDownMenuProps>(
     }, []);
 
     return (
-      <div className={cn(styles["drop-down-menu"], className)} ref={ref}>
+      <div
+        className={cn(styles["drop-down-menu"], className)}
+        ref={ref}
+        onClick={onClick}
+      >
         {list.map(renderItem)}
       </div>
     );

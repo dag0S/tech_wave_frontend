@@ -23,9 +23,10 @@ export const authApi = baseApi.injectEndpoints({
     }),
     current: builder.query<ResponseUserData, void>({
       query: () => ({
-        url: "/user/current",
+        url: "/current",
         method: "GET",
       }),
+      providesTags: ["User"],
     }),
   }),
 });

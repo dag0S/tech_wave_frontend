@@ -10,5 +10,10 @@ export interface UserRegistrationData {
 }
 
 export interface ResponseUserData {
-  token: string;
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  role: "USER" | "ADMIN";
+  avatar: string;
 }

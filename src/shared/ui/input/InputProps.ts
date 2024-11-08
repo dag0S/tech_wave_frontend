@@ -10,4 +10,5 @@ export interface InputProps extends HTMLInput {
   label?: string;
   onChange?: (value: string) => void;
   value?: string;
+  theme?: "normal" | "clear";
 }

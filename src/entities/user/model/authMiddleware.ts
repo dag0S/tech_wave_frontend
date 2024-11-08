@@ -8,8 +8,8 @@ listenerMiddleware.startListening({
   effect: async (action, listenerApi) => {
     listenerApi.cancelActiveListeners();
 
-    if (action.payload.token) {
-      localStorage.setItem(import.meta.env.VITE_TOKEN, action.payload.token);
+    if (action.payload.email) {
+      localStorage.setItem(import.meta.env.VITE_TOKEN, action.payload.email);
     }
   },
 });

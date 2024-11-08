@@ -14,6 +14,8 @@ export const Input: FC<InputProps> = memo(
     placeholder,
     value,
     onChange,
+    theme = "normal",
+    disabled,
     ...otherProps
   }) => {
     const handlerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +23,11 @@ export const Input: FC<InputProps> = memo(
     };
 
     return (
-      <div className={cn(styles["input-container"], className)}>
+      <div
+        className={cn(styles["input-container"], className, styles[theme], {
+          [styles["disable"]]: disabled,
+        })}
+      >
         <input
           id={id}
           name={name}
@@ -29,6 +35,7 @@ export const Input: FC<InputProps> = memo(
           placeholder={placeholder}
           value={value}
           onChange={handlerOnChange}
+          disabled={disabled}
           {...otherProps}
         />
         {label && <label htmlFor={id}>{label}</label>}

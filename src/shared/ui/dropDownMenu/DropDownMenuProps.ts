@@ -23,4 +23,5 @@ export type DropDownItem = ButtonItem | LinkItem;
 export interface DropDownMenuProps {
   className?: string;
   list: DropDownItem[];
+  onClick: () => void;
 }

@@ -2,12 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../api/api";
 
 export interface UserState {
-  token?: string | null;
+  name?: string;
+  email?: string;
+  role?: "USER" | "ADMIN";
+  avatar?: string;
+  password?: string;
+  id?: number;
   isAuthenticated: boolean;
 }
 
 const initialState: UserState = {
-  token: null,
   isAuthenticated: false,
 };
 
@@ -20,18 +24,33 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
-        state.token = action.payload.token;
+        state.name = action.payload.name;
+        state.email = action.payload.email;
+        state.avatar = action.payload.avatar;
+        state.role = action.payload.role;
+        state.id = action.payload.id;
+        state.password = action.payload.password;
         state.isAuthenticated = true;
       })
       .addMatcher(
         authApi.endpoints.register.matchFulfilled,
         (state, action) => {
-          state.token = action.payload.token;
+          state.name = action.payload.name;
+          state.email = action.payload.email;
+          state.avatar = action.payload.avatar;
+          state.role = action.payload.role;
+          state.id = action.payload.id;
+          state.password = action.payload.password;
           state.isAuthenticated = true;
         }
       )
       .addMatcher(authApi.endpoints.current.matchFulfilled, (state, action) => {
-        state.token = action.payload.token;
+        state.name = action.payload.name;
+        state.email = action.payload.email;
+        state.avatar = action.payload.avatar;
+        state.role = action.payload.role;
+        state.id = action.payload.id;
+        state.password = action.payload.password;
         state.isAuthenticated = true;
       });
   },

@@ -58,12 +58,17 @@ server.post("/register", (req, res) => {
   res.status(201).json(newUser);
 });
 
-// server.use((req, res, next) => {
-//   if (!req.headers.authorization) {
-//     return res.status(403).json({ message: "AUTH ERROR" });
-//   }
-//   next();
-// });
+// CURRENT
+server.get("/current", (req, res) => {
+  if (!req.headers.authorization) {
+    res.status(401).jsonp({ message: "Not authenticated" });
+  }
+
+  const users = router.db.get("users").value();
+  const user = users.find((user) => user.email === req.headers.authorization);
+
+  res.status(200).json(user);
+});
 
 server.use(router);
 

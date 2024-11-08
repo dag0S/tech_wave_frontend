@@ -12,6 +12,7 @@ import { deviceSlice, DeviceState } from "@/entities/device";
 import { cartSlice, CartState } from "@/entities/cart";
 import { rangePriceSlice, RangePriceState } from "@/entities/rangePrice";
 import { favoriteListSlice, FavoriteListState } from "@/entities/favoriteList";
+import { profileSlice, ProfileState } from "@/features/editProfile";
 
 export interface StateSchema {
   loginSlice: LoginState;
@@ -23,6 +24,7 @@ export interface StateSchema {
   cartSlice: CartState;
   rangePrice: RangePriceState;
   favoriteList: FavoriteListState;
+  profileSlice: ProfileState;
   [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
@@ -37,6 +39,7 @@ export function createReduxStore(initialState?: StateSchema) {
     cartSlice: cartSlice.reducer,
     rangePrice: rangePriceSlice.reducer,
     favoriteList: favoriteListSlice.reducer,
+    profileSlice: profileSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
   };
 

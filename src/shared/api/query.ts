@@ -5,11 +5,11 @@ const BaseQuery = fetchBaseQuery({
   baseUrl: `${import.meta.env.VITE_API_URL}/`,
   prepareHeaders: (headers, { getState }) => {
     const token =
-      (getState() as StateSchema).userSlice?.token ||
+      (getState() as StateSchema).userSlice?.email ||
       localStorage.getItem(import.meta.env.VITE_TOKEN);
 
     if (token) {
-      headers.set("authorization", `Bearer ${token}`);
+      headers.set("authorization", token);
     }
   },
 });

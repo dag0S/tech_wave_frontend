@@ -11,13 +11,21 @@ export const Button: FC<ButtonProps> = memo(
     theme = ButtonTheme.PRIMARY,
     size = ButtonSize.M,
     disable,
+    color = "none",
     ...otherProps
   }) => {
     return (
       <button
-        className={cn(styles["btn"], className, styles[size], styles[theme], {
-          [styles["disable"]]: disable,
-        })}
+        className={cn(
+          styles["btn"],
+          className,
+          styles[size],
+          styles[theme],
+          styles[color],
+          {
+            [styles["disable"]]: disable,
+          }
+        )}
         {...otherProps}
       >
         {children}

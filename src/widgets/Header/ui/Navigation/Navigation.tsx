@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import { paths } from "@/shared/lib/react-router";
@@ -33,10 +33,13 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
   ({ className, onClick }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenDropDown, setIsOpenDropDown] = useState(false);
-    const { isAuthenticated } = useAppSelector((state) => state.userSlice);
+    const { isAuthenticated, avatar, name } = useAppSelector(
+      (state) => state.userSlice
+    );
     const dispatch = useAppDispatch();
     const { isLoading } = useCurrentQuery();
     const { t } = useTranslation();
+    const navigation = useNavigate();
     const items = useAppSelector((state) => state.cartSlice.items);
     const amountItemsInCart = useMemo(
       () => items.reduce((amount, item) => item.amount + amount, 0),
@@ -50,6 +53,7 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
         setIsOpenDropDown(false);
       }
     });
+
     useEffect(() => {
       setIsFavoriteAnimated(true);
       const timer = setTimeout(() => {
@@ -72,7 +76,8 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
       setIsOpenDropDown(false);
       dispatch(logout());
       localStorage.removeItem(import.meta.env.VITE_TOKEN);
-    }, [dispatch]);
+      navigation(paths.home);
+    }, [dispatch, navigation]);
 
     const handlerToggleDropDownMenu = useCallback((e: ReactMouseEvent) => {
       e.stopPropagation();
@@ -132,11 +137,11 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
                 ref={ignoreRef}
               >
                 <Avatar
-                  src="/img/default-user-avatar.png"
+                  src={avatar || "/img/default-user-avatar.png"}
                   alt="user"
                   size={24}
                 />
-                {t("Выйти")}
+                {name}
               </button>
             ) : (
               <Link to={paths.auth} className={styles["navigation__item"]}>
@@ -149,10 +154,11 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
             <DropDownMenu
               className={styles["navigation__dropdown-mene"]}
               ref={dropDownRef}
+              onClick={() => setIsOpenDropDown(false)}
               list={[
                 {
                   type: DropDownItemType.LINK,
-                  link: "/",
+                  link: paths.profile,
                   name: "Профиль",
                   icon: "svg/user.svg",
                 },

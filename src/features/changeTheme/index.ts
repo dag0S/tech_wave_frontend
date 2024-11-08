@@ -1,1 +1,1 @@
-export { ChangeTheme } from "./ui/ChangeTheme";
+export { ChangeTheme } from "./ui/changeTheme";

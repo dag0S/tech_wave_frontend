@@ -2,11 +2,11 @@
   "users": [
     {
       "id": 1,
-      "name": "Danila",
-      "email": "danila@mail.ru",
-      "password": "123",
       "role": "ADMIN",
-      "avatar": "https://sun1-97.userapi.com/s/v1/ig2/AgUTsp-p5i3FfYBkbaC3gVLe1WDCM_s2ahleSecRsiNjS2zFVJcPS9eEmS21UA8_PCRiwqqWo0HpRtXD9sEIppWk.jpg?quality=95&crop=0,49,1077,1077&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&ava=1&cs=200x200"
+      "password": "123",
+      "avatar": "https://sun9-18.userapi.com/s/v1/ig2/2YawPbsILYQ-TmbbJq3f1L-cdlCUbScF6nvsxkAZYBoyvwIKxV_r_9h5uwswjAfNL5dC2plq3tuk9nxsy4f_f9xJ.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080&from=bu&u=V3cWl4xCtBHug9yDBLtSPVNJ5OzpD-Ieg0WrGkipNYk&cs=604x604",
+      "email": "danila@mail.ru",
+      "name": "Danila"
     },
     {
       "id": 2,

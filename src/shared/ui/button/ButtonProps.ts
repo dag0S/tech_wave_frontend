@@ -19,4 +19,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
   size?: ButtonSize;
   disable?: boolean;
+  color?: "green" | "grey" | "none";
 }
