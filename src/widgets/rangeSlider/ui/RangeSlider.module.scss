@@ -43,6 +43,10 @@
   width: 250px;
   outline: none;
 
+  @media (max-width: 992px) {
+    width: 80%;
+  }
+
   &--z-index-3 {
     z-index: 3;
   }
@@ -83,6 +87,10 @@
 .slider {
   position: relative;
   width: 250px;
+
+  @media (max-width: 992px) {
+    width: 80%;
+  }
   &__range,
   &__track {
     border-radius: 4px;

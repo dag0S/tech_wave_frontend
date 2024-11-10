@@ -1,5 +1,6 @@
-import { FC, memo, useCallback } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import cn from "classnames";
 import { Button, ButtonTheme, Container, Title } from "@/shared/ui";
 import { DevicesList } from "@/widgets/devicesList";
 import { Catalog } from "@/widgets/catalog";
@@ -28,6 +29,10 @@ import styles from "./HomePage.module.scss";
 const HomePage: FC = memo(() => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
+  const [isOpenCategories, setIsOpenCategories] = useState(false);
+  const [isOpenBrands, setIsOpenBrands] = useState(false);
+  const [isOpenPrice, setIsOpenPrice] = useState(false);
 
   const { data: categoryData, isLoading: categoryIsLoading } =
     useGetAllCategoriesQuery();
@@ -84,6 +89,16 @@ const HomePage: FC = memo(() => {
     dispatch(resetRangePrice());
   }, [dispatch]);
 
+  const handlerToggleCategories = useCallback(() => {
+    setIsOpenCategories((prev) => !prev);
+  }, []);
+  const handlerToggleBrands = useCallback(() => {
+    setIsOpenBrands((prev) => !prev);
+  }, []);
+  const handlerTogglePrice = useCallback(() => {
+    setIsOpenPrice((prev) => !prev);
+  }, []);
+
   return (
     <div className={styles["home-page"]}>
       <Container>
@@ -99,8 +114,22 @@ const HomePage: FC = memo(() => {
           </div>
           <div className={styles["home-page__catalogs"]}>
             <div className={styles["home-page__catalogs-row"]}>
-              <Title>{t("Категории")}</Title>
+              <div className={styles["row-title-catalog"]}>
+                <Title>{t("Категории")}</Title>
+                {isOpenCategories ? (
+                  <button onClick={handlerToggleCategories}>
+                    <img src="/svg/close.svg" alt="close" />
+                  </button>
+                ) : (
+                  <button onClick={handlerToggleCategories}>
+                    <img src="/svg/hamburger.svg" alt="menu" />
+                  </button>
+                )}
+              </div>
               <Catalog
+                className={cn(styles["filter-card"], {
+                  [styles["open-filter-card"]]: isOpenCategories,
+                })}
                 data={categoryData}
                 isLoading={categoryIsLoading}
                 onSelect={onSelectCategory}
@@ -108,8 +137,22 @@ const HomePage: FC = memo(() => {
               />
             </div>
             <div className={styles["home-page__catalogs-row"]}>
-              <Title>{t("Бренды")}</Title>
+              <div className={styles["row-title-catalog"]}>
+                <Title>{t("Бренды")}</Title>
+                {isOpenBrands ? (
+                  <button onClick={handlerToggleBrands}>
+                    <img src="/svg/close.svg" alt="close" />
+                  </button>
+                ) : (
+                  <button onClick={handlerToggleBrands}>
+                    <img src="/svg/hamburger.svg" alt="menu" />
+                  </button>
+                )}
+              </div>
               <Catalog
+                className={cn(styles["filter-card"], {
+                  [styles["open-filter-card"]]: isOpenBrands,
+                })}
                 data={brandData}
                 isLoading={brandIsLoading}
                 onSelect={onSelectBrand}
@@ -117,8 +160,22 @@ const HomePage: FC = memo(() => {
               />
             </div>
             <div className={styles["home-page__catalogs-row"]}>
-              <Title>{t("Цена")}</Title>
+              <div className={styles["row-title-catalog"]}>
+                <Title>{t("Цена")}</Title>
+                {isOpenPrice ? (
+                  <button onClick={handlerTogglePrice}>
+                    <img src="/svg/close.svg" alt="close" />
+                  </button>
+                ) : (
+                  <button onClick={handlerTogglePrice}>
+                    <img src="/svg/hamburger.svg" alt="menu" />
+                  </button>
+                )}
+              </div>
               <RangeSlider
+                className={cn(styles["filter-card"], {
+                  [styles["open-filter-card"]]: isOpenPrice,
+                })}
                 min={0}
                 max={100000}
                 minVal={priceFrom}

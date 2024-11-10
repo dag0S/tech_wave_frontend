@@ -28,6 +28,8 @@ import { useClickOutside } from "@/shared/lib/hooks";
 import { NavigationProps } from "./NavigationProps";
 
 import styles from "./Navigation.module.scss";
+import { Search } from "@/features/search";
+import { DeviceBySearchList } from "@/widgets/deviceBySearchList";
 
 const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
   ({ className, onClick }, ref) => {
@@ -87,8 +89,9 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
     return (
       <div ref={ref}>
         <ul className={cn(styles["navigation"], className)}>
-          <Modal isOpen={isOpen} onClose={handleClose}>
-            text
+          <Modal position="top" isOpen={isOpen} onClose={handleClose}>
+            <Search isOpen={isOpen} />
+            <DeviceBySearchList />
           </Modal>
           <li onClick={onClick}>
             <button className={styles["navigation__item"]} onClick={handleOpen}>

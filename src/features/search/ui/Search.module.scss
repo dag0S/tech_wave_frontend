@@ -1,0 +1,21 @@
+.search {
+  position: relative;
+}
+
+.search-line input {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  cursor: pointer;
+}

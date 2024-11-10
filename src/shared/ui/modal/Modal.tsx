@@ -9,6 +9,7 @@ export const Modal: FC<ModalProps> = ({
   children,
   className,
   isOpen,
+  position = "center",
   onClose,
 }) => {
   const handleClose = useCallback(() => {
@@ -43,7 +44,7 @@ export const Modal: FC<ModalProps> = ({
   return (
     <Portal>
       <div
-        className={cn(styles["modal"], className, {
+        className={cn(styles["modal"], className, styles[position], {
           [styles["is-open"]]: isOpen,
         })}
       >

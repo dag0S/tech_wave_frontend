@@ -1,23 +1,26 @@
-import { ChangeEvent, FC, memo } from "react";
+import { ChangeEvent, forwardRef } from "react";
 import { InputProps } from "./InputProps";
 import cn from "classnames";
 
 import styles from "./Input.module.scss";
 
-export const Input: FC<InputProps> = memo(
-  ({
-    className,
-    label,
-    id,
-    name,
-    type,
-    placeholder,
-    value,
-    onChange,
-    theme = "normal",
-    disabled,
-    ...otherProps
-  }) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      className,
+      label,
+      id,
+      name,
+      type,
+      placeholder,
+      value,
+      onChange,
+      theme = "normal",
+      disabled,
+      ...otherProps
+    },
+    ref
+  ) => {
     const handlerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e.target.value);
     };
@@ -36,6 +39,7 @@ export const Input: FC<InputProps> = memo(
           value={value}
           onChange={handlerOnChange}
           disabled={disabled}
+          ref={ref}
           {...otherProps}
         />
         {label && <label htmlFor={id}>{label}</label>}
