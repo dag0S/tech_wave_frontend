@@ -10,16 +10,6 @@
     margin-bottom: 20px;
   }
 
-  &__device-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-
-    @media (max-width: 768px) {
-      justify-content: center;
-    }
-  }
-
   &__add-to-favorite-list {
     position: absolute;
     top: 12px;

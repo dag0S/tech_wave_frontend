@@ -2,7 +2,7 @@ import { FC, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import { Button, ButtonTheme, Container, Title } from "@/shared/ui";
-import { DevicesList } from "@/widgets/devicesList";
+import { DeviceListSkeleton, DevicesList } from "@/widgets/devicesList";
 import { Catalog } from "@/widgets/catalog";
 import {
   resetCategory,
@@ -15,7 +15,7 @@ import {
   useGetAllBrandsQuery,
 } from "@/entities/brand";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
-import { IParams } from "@/entities/device";
+import { IParams, useGetAllDevicesQuery } from "@/entities/device";
 import { RangeSlider } from "@/widgets/rangeSlider";
 import {
   changePriceFrom,
@@ -54,6 +54,8 @@ const HomePage: FC = memo(() => {
     priceFrom: debouncedPriceFrom,
     priceTo: debouncedPriceTo,
   };
+
+  const { data: devicesList, isLoading } = useGetAllDevicesQuery(params);
 
   const onSelectCategory = useCallback(
     (id: number) => {
@@ -110,7 +112,11 @@ const HomePage: FC = memo(() => {
                 <img src="/svg/close.svg" alt="X" />
               </Button>
             </div>
-            <DevicesList params={params} />
+            {devicesList ? (
+              <DevicesList data={devicesList} />
+            ) : (
+              <DeviceListSkeleton />
+            )}
           </div>
           <div className={styles["home-page__catalogs"]}>
             <div className={styles["home-page__catalogs-row"]}>

@@ -1,6 +1,6 @@
-import { IParams } from "@/entities/device";
+import { IDevice } from "@/entities/device";
 
 export interface DevicesListProps {
   className?: string;
-  params: IParams;
+  data: IDevice[];
 }

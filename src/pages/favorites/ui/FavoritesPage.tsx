@@ -7,6 +7,7 @@ import { Device } from "@/entities/device";
 import { clearFavoriteList } from "@/entities/favoriteList";
 
 import styles from "./FavoritesPage.module.scss";
+import { DevicesList } from "@/widgets/devicesList";
 
 const FavoritesPage: FC = memo(() => {
   const { t } = useTranslation("favorites");
@@ -38,25 +39,11 @@ const FavoritesPage: FC = memo(() => {
             </Button>
           )}
         </div>
-        <div className={styles["favorites-page__device-list"]}>
-          {devicesInFavorite.length > 0 ? (
-            devicesInFavorite.map((device) => (
-              <Device
-                device={device}
-                imageUrl={device.images[0]}
-                AddToFavoriteList={
-                  <AddToFavoriteList
-                    className={styles["favorites-page__add-to-favorite-list"]}
-                    device={device}
-                  />
-                }
-                key={device.id}
-              />
-            ))
-          ) : (
-            <div>{t("Список избранного пуст")}</div>
-          )}
-        </div>
+        {devicesInFavorite.length > 0 ? (
+          <DevicesList data={devicesInFavorite} />
+        ) : (
+          <div>{t("Список избранного пуст")}</div>
+        )}
       </Container>
     </div>
   );

@@ -8,19 +8,8 @@ import { AddToFavoriteList } from "@/features/addToFavoriteList";
 import styles from "./DevicesList.module.scss";
 
 export const DevicesList: FC<DevicesListProps> = memo(
-  ({ className, params }) => {
-    const { data, isLoading } = useGetAllDevicesQuery(params);
+  ({ className, data }) => {
     const isDevices = Array.isArray(data) && data.length > 0;
-
-    if (isLoading) {
-      return (
-        <div className={cn(styles["devices-list"], className)}>
-          {[...Array(6)].map((_, i) => (
-            <Skeleton height={379} border={2} key={i} />
-          ))}
-        </div>
-      );
-    }
 
     return (
       <div className={cn(styles["devices-list"], className)}>
