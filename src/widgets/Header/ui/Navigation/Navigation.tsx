@@ -90,7 +90,7 @@ const Navigation = forwardRef<HTMLDivElement, NavigationProps>(
       <div ref={ref}>
         <ul className={cn(styles["navigation"], className)}>
           <Modal position="top" isOpen={isOpen} onClose={handleClose}>
-            <Search isOpen={isOpen} />
+            <Search isOpen={isOpen} onClose={handleClose} />
             <DeviceBySearchList />
           </Modal>
           <li onClick={onClick}>

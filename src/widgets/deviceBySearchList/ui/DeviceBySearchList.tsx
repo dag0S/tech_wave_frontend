@@ -2,6 +2,9 @@ import { FC, useEffect, useState } from "react";
 import { IDevice } from "@/entities/device";
 import { useAppSelector } from "@/shared/model";
 import { useDebounce } from "@/shared/lib/hooks";
+import { DeviceItem } from "./deviceItem/DeviceItem";
+
+import styles from "./DeviceBySearchList.module.scss";
 
 export const DeviceBySearchList: FC = () => {
   const [devices, setDevices] = useState<IDevice[]>([]);
@@ -23,5 +26,14 @@ export const DeviceBySearchList: FC = () => {
     }
   }, [debouncedSearchValue]);
 
-  return <div>{devices.length}</div>;
+  if (devices.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={styles["devices-list"]}>
+      {devices.length > 0 &&
+        devices.map((device) => <DeviceItem device={device} key={device.id} />)}
+    </div>
+  );
 };

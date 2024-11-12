@@ -6,7 +6,7 @@ import { SearchProps } from "./Search.props";
 
 import styles from "./Search.module.scss";
 
-export const Search: FC<SearchProps> = ({ isOpen }) => {
+export const Search: FC<SearchProps> = ({ isOpen, onClose }) => {
   const dispatch = useAppDispatch();
   const { searchValue } = useAppSelector((state) => state.searchSlice);
   const searchRef = useRef<null | HTMLInputElement>(null);
@@ -29,7 +29,8 @@ export const Search: FC<SearchProps> = ({ isOpen }) => {
 
   const handlerClearSearchInput = useCallback(() => {
     dispatch(clearSearchValue());
-  }, [dispatch]);
+    onClose();
+  }, [dispatch, onClose]);
 
   return (
     <div className={styles["search"]}>
