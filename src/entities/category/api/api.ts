@@ -9,6 +9,12 @@ export const categoryApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getCategoryById: builder.query<ResponseCategoryData, number>({
+      query: (id) => ({
+        url: `/categories/${id}`,
+        method: "GET",
+      }),
+    }),
     createCategory: builder.mutation<ResponseCategoryData, CategoryData>({
       query: (categoryData) => ({
         url: "/categories",
@@ -19,5 +25,8 @@ export const categoryApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllCategoriesQuery, useCreateCategoryMutation } =
-  categoryApi;
+export const {
+  useGetAllCategoriesQuery,
+  useCreateCategoryMutation,
+  useGetCategoryByIdQuery,
+} = categoryApi;

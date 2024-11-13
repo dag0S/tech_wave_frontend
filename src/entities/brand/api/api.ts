@@ -9,6 +9,12 @@ export const brandApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getBrandById: builder.query<ResponseBrandData, number>({
+      query: (id) => ({
+        url: `/brands/${id}`,
+        method: "GET",
+      }),
+    }),
     createBrand: builder.mutation<ResponseBrandData, BrandData>({
       query: (brandData) => ({
         url: "/brands",
@@ -19,4 +25,4 @@ export const brandApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllBrandsQuery, useCreateBrandMutation } = brandApi;
+export const { useGetAllBrandsQuery, useCreateBrandMutation, useGetBrandByIdQuery } = brandApi;

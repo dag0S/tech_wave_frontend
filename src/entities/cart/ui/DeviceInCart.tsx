@@ -7,6 +7,8 @@ import { useAppDispatch } from "@/shared/model";
 import { addItem, minusItem, removeItem } from "../model/slice";
 import { CartItem } from "../model/types";
 import { paths } from "@/shared/lib/react-router";
+import { useGetBrandByIdQuery } from "@/entities/brand";
+import { useGetCategoryByIdQuery } from "@/entities/category";
 
 import styles from "./DeviceInCart.module.scss";
 
@@ -14,6 +16,11 @@ export const DeviceInCart: FC<DeviceInCartProps> = memo(
   ({ className, data, AddToFavoriteList }) => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation("cart");
+    const { data: brand, isLoading: brandIsLoading } = useGetBrandByIdQuery(
+      data.brandId
+    );
+    const { data: category, isLoading: categoryIsLoading } =
+      useGetCategoryByIdQuery(data.categoryId);
 
     const handlerAddItem = useCallback(() => {
       dispatch(addItem({ id: data.id } as CartItem));
@@ -37,8 +44,8 @@ export const DeviceInCart: FC<DeviceInCartProps> = memo(
         </Link>
         <div className={styles["device__right-wrap"]}>
           <div className={styles["device__categories"]}>
-            <div>Brand</div>
-            <div>Category</div>
+            <div>{brandIsLoading ? "..." : brand?.name}</div>
+            <div>{categoryIsLoading ? "..." : category?.name}</div>
           </div>
           <Link
             className={styles["device__name"]}

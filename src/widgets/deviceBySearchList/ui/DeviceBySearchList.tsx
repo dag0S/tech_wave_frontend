@@ -3,10 +3,13 @@ import { IDevice } from "@/entities/device";
 import { useAppSelector } from "@/shared/model";
 import { useDebounce } from "@/shared/lib/hooks";
 import { DeviceItem } from "./deviceItem/DeviceItem";
+import { DeviceBySearchListProps } from "./DeviceBySearchList.props";
 
 import styles from "./DeviceBySearchList.module.scss";
 
-export const DeviceBySearchList: FC = () => {
+export const DeviceBySearchList: FC<DeviceBySearchListProps> = ({
+  onClose,
+}) => {
   const [devices, setDevices] = useState<IDevice[]>([]);
   const { searchValue } = useAppSelector((state) => state.searchSlice);
   const debouncedSearchValue = useDebounce(searchValue, 500);
@@ -33,7 +36,9 @@ export const DeviceBySearchList: FC = () => {
   return (
     <div className={styles["devices-list"]}>
       {devices.length > 0 &&
-        devices.map((device) => <DeviceItem device={device} key={device.id} />)}
+        devices.map((device) => (
+          <DeviceItem device={device} key={device.id} onClose={onClose} />
+        ))}
     </div>
   );
 };

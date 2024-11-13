@@ -9,45 +9,53 @@ import { FavoritesPage } from "@/pages/favorites";
 import { NotFoundPage } from "@/pages/notFound";
 import { ProductPage } from "@/pages/product";
 import { ProfilePage } from "@/pages/profile";
-
-const router = createBrowserRouter([
-  {
-    path: paths.home,
-    element: <BaseLayout />,
-    children: [
-      {
-        path: paths.home,
-        element: <HomePage />,
-      },
-      {
-        path: paths.auth,
-        element: <AuthPage />,
-      },
-      {
-        path: paths.cart,
-        element: <CartPage />,
-      },
-      {
-        path: paths.favorites,
-        element: <FavoritesPage />,
-      },
-      {
-        path: `${paths.product}/:id`,
-        element: <ProductPage />,
-      },
-      {
-        path: paths.profile,
-        element: <ProfilePage />,
-      },
-      {
-        path: paths.notFound,
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-]);
+import { PrivateRoute } from "./PrivateRoute";
+import { useAppSelector } from "@/shared/model";
 
 const AppStore: FC = () => {
+  const { isAuthenticated } = useAppSelector((state) => state.userSlice);
+
+  const router = createBrowserRouter([
+    {
+      path: paths.home,
+      element: <BaseLayout />,
+      children: [
+        {
+          path: paths.home,
+          element: <HomePage />,
+        },
+        {
+          path: paths.auth,
+          element: <AuthPage />,
+        },
+        {
+          path: paths.cart,
+          element: <CartPage />,
+        },
+        {
+          path: paths.favorites,
+          element: <FavoritesPage />,
+        },
+        {
+          path: `${paths.product}/:id`,
+          element: <ProductPage />,
+        },
+        {
+          path: paths.profile,
+          element: (
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <ProfilePage />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: paths.notFound,
+          element: <NotFoundPage />,
+        },
+      ],
+    },
+  ]);
+
   return <RouterProvider router={router} />;
 };
 
