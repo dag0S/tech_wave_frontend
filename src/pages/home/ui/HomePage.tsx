@@ -55,7 +55,7 @@ const HomePage: FC = memo(() => {
     priceTo: debouncedPriceTo,
   };
 
-  const { data: devicesList, isLoading } = useGetAllDevicesQuery(params);
+  const { data: devicesList } = useGetAllDevicesQuery(params);
 
   const onSelectCategory = useCallback(
     (id: number) => {

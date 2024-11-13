@@ -1,7 +1,6 @@
 import { FC, memo } from "react";
 import cn from "classnames";
-import { Device, useGetAllDevicesQuery } from "@/entities/device";
-import { Skeleton } from "@/shared/ui";
+import { Device } from "@/entities/device";
 import { DevicesListProps } from "./DevicesListProps";
 import { AddToFavoriteList } from "@/features/addToFavoriteList";
 

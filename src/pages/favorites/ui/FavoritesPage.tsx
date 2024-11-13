@@ -2,12 +2,10 @@ import { FC, memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonSize, ButtonTheme, Container, Title } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
-import { AddToFavoriteList } from "@/features/addToFavoriteList";
-import { Device } from "@/entities/device";
 import { clearFavoriteList } from "@/entities/favoriteList";
+import { DevicesList } from "@/widgets/devicesList";
 
 import styles from "./FavoritesPage.module.scss";
-import { DevicesList } from "@/widgets/devicesList";
 
 const FavoritesPage: FC = memo(() => {
   const { t } = useTranslation("favorites");
