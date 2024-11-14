@@ -27,8 +27,8 @@ export const AddToFavoriteList: FC<AddToFavoriteListProps> = memo(
         <img
           src={
             isFavorite
-              ? "/public/svg/is-favorite.svg"
-              : "/public/svg/favorite.svg"
+              ? "/svg/is-favorite.svg"
+              : "/svg/favorite.svg"
           }
           alt="like"
         />
