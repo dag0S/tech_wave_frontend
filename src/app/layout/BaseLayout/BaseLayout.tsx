@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ReactNotifications } from "react-notifications-component";
-import { Header } from "@/widgets/Header";
+import { Header } from "@/widgets/header";
 import { PageLoader } from "@/widgets/pageLoader";
 import { Announcement } from "@/shared/ui";
 import { addNotification } from "@/shared/lib/notification";
